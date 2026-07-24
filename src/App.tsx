@@ -9,9 +9,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-
         <Route path="/dashboard" element={<DashboardLayout />}>
-          {/* <Route path="/" element={<Dashboard />} /> */}
         </Route>
       </Routes>
       <Toaster />
