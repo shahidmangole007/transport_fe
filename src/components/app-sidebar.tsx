@@ -45,7 +45,7 @@ const data = {
   ],
   navMain: [
     {
-      title: "पत्रक",
+      title: "पत्रके",
       url: "#",
       icon: <TerminalSquareIcon />,
       isActive: true,
@@ -162,7 +162,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <ThemeToggle></ThemeToggle>
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
