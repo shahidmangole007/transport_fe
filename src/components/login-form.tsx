@@ -46,6 +46,10 @@ export function LoginForm({
   const [loginError, setLoginError] = useState("");
 
   const onSubmit = (data: LoginFormData) => {
+
+    console.log(data);
+    
+
     if (data.username === "admin" && data.password === "123456") {
       navigate("/dashboard");
     } else {

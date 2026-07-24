@@ -88,28 +88,18 @@ export function NavUser({
                   </div>
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
+
+              {/* <DropdownMenuSeparator /> */}
+
+              {/* <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <SparklesIcon />
                   Upgrade to Pro
                 </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <BadgeCheckIcon />
-                  Account
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <CreditCardIcon />
-                  Billing
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <BellIcon />
-                  Notifications
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
+              </DropdownMenuGroup> */}
+
+            
+
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 variant="destructive"
@@ -125,8 +115,6 @@ export function NavUser({
           </DropdownMenu>
         </SidebarMenuItem>
       </SidebarMenu>
-
-
 
       <AlertDialog2
         open={open}

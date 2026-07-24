@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import placeholder2  from "../assets/placeholder2.jpg"
+
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
@@ -26,14 +28,12 @@ import {
   MapIcon,
   Truck,
 } from "lucide-react";
-import { ThemeToggle } from "./theme-toggle";
-
 
 const data = {
   user: {
     name: "Shahid Mangole",
     email: "shahidmmangole7864@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar: placeholder2 ,
   },
   teams: [
     {
@@ -168,3 +168,4 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
   );
 }
+
