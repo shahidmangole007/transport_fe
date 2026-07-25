@@ -22,10 +22,9 @@ import {
   BellIcon,
   LogOutIcon,
 } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { AlertDialog2 } from "./alert-dialog";
-import { Button } from "@base-ui/react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function NavUser({
   user,
@@ -45,6 +44,7 @@ export function NavUser({
     setOpen(false);
     navigate("/");
   };
+
   return (
     <>
       <SidebarMenu>
@@ -88,26 +88,33 @@ export function NavUser({
                   </div>
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
-
-              {/* <DropdownMenuSeparator /> */}
-
-              {/* <DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <SparklesIcon />
                   Upgrade to Pro
                 </DropdownMenuItem>
-              </DropdownMenuGroup> */}
-
-            
-
+              </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem
-                variant="destructive"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(true);
-                }}
-              >
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <BadgeCheckIcon />
+                  Account
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCardIcon />
+                  Billing
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <BellIcon />
+                  Notifications
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem  onClick={(e)=>{
+                e.preventDefault()
+                setOpen(true)
+              }}>
                 <LogOutIcon />
                 Log out
               </DropdownMenuItem>

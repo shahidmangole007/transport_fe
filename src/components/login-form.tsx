@@ -50,7 +50,7 @@ export function LoginForm({
     console.log(data);
     
 
-    if (data.username === "admin" && data.password === "123456") {
+    if (data.username === "admin" && data.password === "7777") {
       navigate("/dashboard");
     } else {
       // alert("Invalid username or password");
@@ -59,9 +59,9 @@ export function LoginForm({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="overflow-hidden p-0">
-        <CardContent className="grid p-0 md:grid-cols-2">
+    <div className={cn("flex flex-col gap-6     ", className)} {...props}>
+      <Card className="overflow-hidden p-0  ">
+        <CardContent className="grid p-0 md:grid-cols-2 ">
           <form className="p-6 md:p-8 flex-1" onSubmit={handleSubmit(onSubmit)}>
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
@@ -72,7 +72,7 @@ export function LoginForm({
                 </p>
               </div>
 
-              <Field>
+              <Field >
                 <FieldLabel htmlFor="username">Username</FieldLabel>
 
                 <Input
@@ -88,7 +88,7 @@ export function LoginForm({
                 )}
               </Field>
 
-              <Field>
+              <Field >
                 <FieldLabel htmlFor="password">Password</FieldLabel>
 
                 <Input
@@ -113,7 +113,7 @@ export function LoginForm({
                 </Alert>
               )}
 
-              <Field>
+              <Field >
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
@@ -125,7 +125,7 @@ export function LoginForm({
             <img
               src={placeholder}
               alt="Login"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2]"
+              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.8]"
             />
           </div>
         </CardContent>

@@ -61,7 +61,7 @@ export function NavProjects({
                   />
                   <span>View Project</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem >
+                <DropdownMenuItem>
                   <ArrowRightIcon
                   />
                   <span>Share Project</span>

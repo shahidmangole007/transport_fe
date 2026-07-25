@@ -1,59 +1,65 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import placeholder2  from "../assets/placeholder2.jpg"
-
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
+import { NavMain } from "@/components/nav-main"
+import { NavProjects } from "@/components/nav-projects"
+import { NavUser } from "@/components/nav-user"
+import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import {
-  GalleryVerticalEndIcon,
-  AudioLinesIcon,
-  TerminalIcon,
-  TerminalSquareIcon,
-  BotIcon,
-  BookOpenIcon,
-  Settings2Icon,
-  FrameIcon,
-  PieChartIcon,
-  MapIcon,
-  Truck,
-} from "lucide-react";
+} from "@/components/ui/sidebar"
+import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, TerminalSquareIcon, BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon, Truck } from "lucide-react"
 
+// This is sample data.
 const data = {
   user: {
-    name: "Shahid Mangole",
-    email: "shahidmmangole7864@gmail.com",
-    avatar: placeholder2 ,
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
-      name: "Transport App",
-      logo: <Truck />,
+      name: "Acme Inc",
+      logo: (
+        <Truck/>
+      ),
       plan: "Enterprise",
     },
-   
+    {
+      name: "Acme Corp.",
+      logo: (
+        <AudioLinesIcon
+        />
+      ),
+      plan: "Startup",
+    },
+    {
+      name: "Evil Corp.",
+      logo: (
+        <TerminalIcon
+        />
+      ),
+      plan: "Free",
+    },
   ],
   navMain: [
     {
-      title: "पत्रके",
+      title: "Playground",
       url: "#",
-      icon: <TerminalSquareIcon />,
+      icon: (
+        <TerminalSquareIcon
+        />
+      ),
       isActive: true,
       items: [
         {
           title: "History",
           url: "#",
-
         },
         {
           title: "Starred",
@@ -68,7 +74,10 @@ const data = {
     {
       title: "Models",
       url: "#",
-      icon: <BotIcon />,
+      icon: (
+        <BotIcon
+        />
+      ),
       items: [
         {
           title: "Genesis",
@@ -87,7 +96,10 @@ const data = {
     {
       title: "Documentation",
       url: "#",
-      icon: <BookOpenIcon />,
+      icon: (
+        <BookOpenIcon
+        />
+      ),
       items: [
         {
           title: "Introduction",
@@ -110,9 +122,11 @@ const data = {
     {
       title: "Settings",
       url: "#",
-      icon: <Settings2Icon />,
+      icon: (
+        <Settings2Icon
+        />
+      ),
       items: [
-        
         {
           title: "General",
           url: "#",
@@ -136,20 +150,29 @@ const data = {
     {
       name: "Design Engineering",
       url: "#",
-      icon: <FrameIcon />,
+      icon: (
+        <FrameIcon
+        />
+      ),
     },
     {
       name: "Sales & Marketing",
       url: "#",
-      icon: <PieChartIcon />,
+      icon: (
+        <PieChartIcon
+        />
+      ),
     },
     {
       name: "Travel",
       url: "#",
-      icon: <MapIcon />,
+      icon: (
+        <MapIcon
+        />
+      ),
     },
   ],
-};
+}
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -166,6 +189,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  );
+  )
 }
-

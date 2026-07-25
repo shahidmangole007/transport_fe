@@ -8,6 +8,6 @@ export function DashboardBlock({
   className,
 }: DashboardBlockProps) {
   return (
-    <Card className={`rounded-3xl ${className}`} />
+    <Card className={`  ${className}`} />
   )
 }
