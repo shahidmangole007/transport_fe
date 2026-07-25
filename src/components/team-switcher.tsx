@@ -41,12 +41,13 @@ export function TeamSwitcher({
           <DropdownMenuTrigger
             render={
               <SidebarMenuButton
+                
                 size="lg"
-                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                className="data-open:bg-sidebar-accent   data-open:text-sidebar-accent-foreground"
               />
             }
           >
-            <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+            <div className="flex  aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               {activeTeam.logo}
             </div>
             <div className="grid flex-1 text-left text-sm leading-tight">
@@ -75,12 +76,12 @@ export function TeamSwitcher({
                     {team.logo}
                   </div>
                   {team.name}
-                  <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
+                  {/* <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut> */}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
+            {/* <DropdownMenuGroup>
               <DropdownMenuItem className="gap-2 p-2">
                 <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
                   <PlusIcon className="size-4" />
@@ -89,7 +90,7 @@ export function TeamSwitcher({
                   Add team
                 </div>
               </DropdownMenuItem>
-            </DropdownMenuGroup>
+            </DropdownMenuGroup> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

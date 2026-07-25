@@ -1,8 +1,11 @@
-import DashboardLayout from "./app/DashboardLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import { Toaster } from "./components/ui/sonner";
 import { useEffect, useState } from "react";
+import { DashboardBlock } from "./components/dashboard-block";
+import Dashboard from "./pages/Dashboard";
+import Master from "./pages/Master";
 
 export default function App() {
   const [helpOpen, setHelpOpen] = useState(false);
@@ -22,13 +25,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={
-            <DashboardLayout helpOpen={helpOpen} setHelpOpen={setHelpOpen} />
-          }
-        ></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={ <DashboardLayout helpOpen={helpOpen} setHelpOpen={setHelpOpen} /> } >
+          <Route path="/dashboard" element ={ <Dashboard/> }/>
+          <Route path="/master" element ={ <Master/> }/>
+        </Route>
       </Routes>
       <Toaster />
     </BrowserRouter>
