@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { SaveIcon, PrinterIcon , PrinterCheckIcon , SavePlusIcon, X, Printer, Trash2 } from "lucide-react";
+import { SaveIcon, SavePlusIcon, File, Printer, Trash2 } from "lucide-react";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -12,9 +11,48 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PaginationButtons } from "@/components/PaginationButtons";
-import samplePdf from "../../../public/sample.pdf"
+import { useRef, useState } from "react";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { FieldGroup } from "@/components/ui/field";
+
+const partyMasterSchema = z.object({
+  partyCode: z.string().min(1, "Party Code  is required"),
+  partyName: z.string().min(4, "Party Name must be at least 4 characters"),
+  partyAddress: z
+    .string()
+    .min(4, "Party Address must be at least 4 characters"),
+});
+
+type partyMasterFormData = z.infer<typeof partyMasterSchema>;
 
 export default function PartyMaster() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<partyMasterFormData>({
+    resolver: zodResolver(partyMasterSchema),
+    defaultValues: {
+      partyCode: "",
+      partyName: "",
+      partyAddress: "",
+    },
+  });
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isShowPdf, setIsShowPdf] = useState(false);
+
+  const handlePrint = () => {
+    iframeRef.current?.contentWindow?.focus();
+    iframeRef.current?.contentWindow?.print();
+  };
+
+  const onSubmit = (data: partyMasterFormData) => {
+    console.log(data);
+  };
+
   return (
     <div className="grid h-[100%]  md:grid-cols-2">
       <div className=" rounded-xl max-w-xl  justify-center ">
@@ -30,39 +68,63 @@ export default function PartyMaster() {
           </CardHeader>
           <CardContent>
             <form>
-              <div className="flex flex-col gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="code">Party Code</Label>
-                  <Input
-                    id="code"
-                    type="number"
-                    placeholder="party code"
-                    required
-                  />
+              <FieldGroup>
+                <div className="flex flex-col gap-6">
+                  <div className="grid gap-2">
+                    <Label htmlFor="code">Party Code</Label>
+                    <Input
+                      id="code"
+                      type="number"
+                      placeholder="party code"
+                      required
+                      {...register("partyCode")}
+                    />
+                  </div>
+                  {errors.partyCode && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {errors.partyCode.message}
+                    </p>
+                  )}
+                  <div className="grid gap-2">
+                    <Label htmlFor="name">Party Name</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="party name"
+                      required
+                      {...register("partyName")}
+                    />
+                  </div>
+                  {errors.partyName && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {errors.partyName.message}
+                    </p>
+                  )}
+                  <div className="grid gap-2">
+                    <Label htmlFor="name">Party Address</Label>
+                    <Input
+                      id="address"
+                      type="text"
+                      placeholder="party address"
+                      required
+                      {...register("partyAddress")}
+                    />
+                  </div>
+                  {errors.partyAddress && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {errors.partyAddress.message}
+                    </p>
+                  )}
                 </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="name">Party Name</Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    placeholder="party name"
-                    required
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="name">Party Address</Label>
-                  <Input
-                    id="address"
-                    type="text"
-                    placeholder="party address"
-                    required
-                  />
-                </div>
-              </div>
+              </FieldGroup>
             </form>
           </CardContent>
-           <CardFooter className="flex justify- gap-2">
-            <Button type="submit" className="flex-1" >
+          <CardFooter className="flex justify- gap-2">
+            <Button
+              onClick={handleSubmit(onSubmit)}
+              type="submit"
+              className="flex-1"
+            >
               Save
               <SaveIcon data-icon="inline-end" />
             </Button>
@@ -70,28 +132,40 @@ export default function PartyMaster() {
               Update
               <SavePlusIcon data-icon="inline-end" />
             </Button>
-            <Button variant="outline" className="flex-1" >
+            <Button onClick={handlePrint} variant="outline" className="flex-1">
               Print
               <Printer data-icon="inline-end" />
             </Button>
-            <Button variant="destructive" className="flex-1" >
+
+            <Button
+              onClick={() => {
+                setIsShowPdf(!isShowPdf);
+              }}
+              variant="outline"
+              className="flex-1"
+            >
+              {!isShowPdf ? "Show Pdf" : "Hide Pdf"}
+              <File data-icon="inline-end" />
+            </Button>
+            <Button variant="destructive" className="flex-1">
               Delete
               <Trash2 data-icon="inline-end" />
             </Button>
-          </CardFooter> 
-              <PaginationButtons />
+          </CardFooter>
+          {/* <PaginationButtons /> */}
         </Card>
-      
       </div>
-      {/* <div className=" rounded-xl bg-orange-400" /> */}
-      <div className=" rounded-xl flex-1 bg-violet-400" >
 
-              <iframe src="../../../public/sample.pdf"  className="w-full h-full" ></iframe>
-
-      </div>
+      {isShowPdf && (
+        <div className=" rounded-xl flex-1 bg-violet-400">
+          <iframe
+            ref={iframeRef}
+            src="/sample-demo.pdf#toolbar=0&navpanes=0"
+            className="w-full h-full rounded-lg border"
+            title="Sample PDF"
+          />
+        </div>
+      )}
     </div>
   );
 }
-
-
-
