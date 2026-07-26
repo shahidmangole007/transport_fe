@@ -12,17 +12,11 @@ import {
 import type { Dispatch, SetStateAction } from "react";
 
 
-type DialogStickyFooterProps = {
-  open: boolean;
-  onOpenChange: Dispatch<SetStateAction<boolean>>;
-};
 
-export function DialogStickyFooter({
-  open,
-  onOpenChange,
-}: DialogStickyFooterProps) {
+
+export function DialogStickyFooter() {
   return (
-    <Dialog  open={open} onOpenChange={onOpenChange}>
+    <Dialog>
       <DialogContent className="">
         <DialogHeader>
           <DialogTitle>Sticky Footer</DialogTitle>
@@ -37,7 +31,7 @@ export function DialogStickyFooter({
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+          <Button variant="outline" >
             Close
           </Button>
         </DialogFooter>

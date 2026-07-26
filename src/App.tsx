@@ -8,19 +8,6 @@ import PartyMaster from "./pages/Master/PartyMaster";
 import VehicleMaster from "./pages/Master/VehicleMaster";
 
 export default function App() {
-  const [helpOpen, setHelpOpen] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "F1") {
-        e.preventDefault();
-        setHelpOpen(true);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   return (
     <BrowserRouter>
@@ -29,7 +16,7 @@ export default function App() {
         <Route
           path="/dashboard"
           element={
-            <DashboardLayout helpOpen={helpOpen} setHelpOpen={setHelpOpen} />
+            <DashboardLayout  />
           }
         >
           <Route index element={<Dashboard />} />

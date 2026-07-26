@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { SaveIcon, SavePlusIcon, File, Printer, Trash2, InfoIcon } from "lucide-react";
+import {
+  SaveIcon,
+  SavePlusIcon,
+  File,
+  Printer,
+  Trash2,
+  InfoIcon,
+} from "lucide-react";
 import {
   Card,
   CardAction,
@@ -12,11 +19,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PaginationButtons } from "@/components/PaginationButtons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
+import { TableWithFooter } from "@/components/TableWithFooter";
+import { Searchbar } from "@/components/Searchbar";
 
 const partyMasterSchema = z.object({
   partyCode: z.string().min(1, "Party Code  is required"),
@@ -45,27 +54,57 @@ export default function PartyMaster() {
   const infoRef = useRef<HTMLIFrameElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  // const handlePrint = () => {
-  //   iframeRef.current?.contentWindow?.focus();
-  //   iframeRef.current?.contentWindow?.print();
-  // };
-
   const onSubmit = (data: partyMasterFormData) => {
     console.log(data);
   };
 
+  const [search, setSearch] = useState("");
+  const [parties, setParties] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      setLoading(true);
+
+      try {
+        // const res : any = { "data" : [{}]} /* await partyService.search(search);*/
+        const res = {
+          data: [
+            {
+              partyCode: "P001",
+              partyName: "ABC Traders",
+              partyAddress: "Kolhapur",
+            },
+          ],
+        };
+
+        setParties(res.data);
+        setParties(res.data);
+      } finally {
+        setLoading(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
   return (
-    <div className="grid h-[100%]  md:grid-cols-2">
-      <div className=" rounded-xl max-w-xl  justify-center ">
-        <Card className="  max-w-xl ">
+    <div className="grid h-[100%] gap-4 md:grid-cols-[40%_59%]">
+      <div className="rounded-xl  justify-center ">
+        <Card className="  ">
           <CardHeader>
             <CardTitle>Party Master</CardTitle>
             <CardDescription>
               Enter party's code, name and address.
             </CardDescription>
             <CardAction>
-
-              <Button onClick={() => {setIsShow(!isShow)}} variant="outline" size="icon">
+              <Button
+                onClick={() => {
+                  setIsShow(!isShow);
+                }}
+                variant="outline"
+                size="icon"
+              >
                 <InfoIcon />
               </Button>
             </CardAction>
@@ -136,10 +175,6 @@ export default function PartyMaster() {
               Update
               <SavePlusIcon data-icon="inline-end" />
             </Button>
-            {/* <Button onClick={handlePrint} variant="outline" className="flex-1">
-              Print
-              <Printer data-icon="inline-end" />
-            </Button> */}
 
             <Button variant="destructive" className="flex-1">
               Delete
@@ -151,15 +186,21 @@ export default function PartyMaster() {
       </div>
 
       {isShow && (
-        <div 
-         ref={infoRef}
-        className=" rounded-xl flex-1 bg-violet-400">
-          {/* <iframe
-            src="/sample-demo.pdf#toolbar=0&navpanes=0"
-            className="w-full h-full rounded-lg border"
-            title="Sample PDF"
-          /> */}
-        </div>
+        <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
+          <CardHeader className="">
+            <CardTitle>Party Master</CardTitle>
+            <div className="mt-3 w-full">
+              <Searchbar
+                value={search}
+                onChange={setSearch}
+                placeholder="Search Party..."
+                resultCount={parties.length}
+              />
+            </div>
+          </CardHeader>
+
+          <TableWithFooter />
+        </Card>
       )}
     </div>
   );
