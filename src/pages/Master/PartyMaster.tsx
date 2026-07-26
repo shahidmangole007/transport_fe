@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { SaveIcon, SavePlusIcon, File, Printer, Trash2 } from "lucide-react";
+import { SaveIcon, SavePlusIcon, File, Printer, Trash2, InfoIcon } from "lucide-react";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -41,13 +42,13 @@ export default function PartyMaster() {
     },
   });
 
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [isShowPdf, setIsShowPdf] = useState(false);
+  const infoRef = useRef<HTMLIFrameElement>(null);
+  const [isShow, setIsShow] = useState(false);
 
-  const handlePrint = () => {
-    iframeRef.current?.contentWindow?.focus();
-    iframeRef.current?.contentWindow?.print();
-  };
+  // const handlePrint = () => {
+  //   iframeRef.current?.contentWindow?.focus();
+  //   iframeRef.current?.contentWindow?.print();
+  // };
 
   const onSubmit = (data: partyMasterFormData) => {
     console.log(data);
@@ -62,9 +63,12 @@ export default function PartyMaster() {
             <CardDescription>
               Enter party's code, name and address.
             </CardDescription>
-            {/* <CardAction>
-              <Button variant="link">Sign Up</Button>
-            </CardAction> */}
+            <CardAction>
+
+              <Button onClick={() => {setIsShow(!isShow)}} variant="outline" size="icon">
+                <InfoIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             <form>
@@ -132,21 +136,11 @@ export default function PartyMaster() {
               Update
               <SavePlusIcon data-icon="inline-end" />
             </Button>
-            <Button onClick={handlePrint} variant="outline" className="flex-1">
+            {/* <Button onClick={handlePrint} variant="outline" className="flex-1">
               Print
               <Printer data-icon="inline-end" />
-            </Button>
+            </Button> */}
 
-            <Button
-              onClick={() => {
-                setIsShowPdf(!isShowPdf);
-              }}
-              variant="outline"
-              className="flex-1"
-            >
-              {!isShowPdf ? "Show Pdf" : "Hide Pdf"}
-              <File data-icon="inline-end" />
-            </Button>
             <Button variant="destructive" className="flex-1">
               Delete
               <Trash2 data-icon="inline-end" />
@@ -156,14 +150,15 @@ export default function PartyMaster() {
         </Card>
       </div>
 
-      {isShowPdf && (
-        <div className=" rounded-xl flex-1 bg-violet-400">
-          <iframe
-            ref={iframeRef}
+      {isShow && (
+        <div 
+         ref={infoRef}
+        className=" rounded-xl flex-1 bg-violet-400">
+          {/* <iframe
             src="/sample-demo.pdf#toolbar=0&navpanes=0"
             className="w-full h-full rounded-lg border"
             title="Sample PDF"
-          />
+          /> */}
         </div>
       )}
     </div>
