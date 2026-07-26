@@ -33,7 +33,7 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Master",
       url: "#",
       icon: (
         <TerminalSquareIcon
@@ -42,12 +42,12 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Party Master",
+          url: "/dashboard/partymaster",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Vehicle Master",
+          url: "/dashboard/vehiclemaster",
         },
         {
           title: "Settings",

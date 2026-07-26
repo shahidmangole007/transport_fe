@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import { Toaster } from "./components/ui/sonner";
 import { useEffect, useState } from "react";
-import { DashboardBlock } from "./components/dashboard-block";
 import Dashboard from "./pages/Dashboard";
-import Master from "./pages/Master";
+import PartyMaster from "./pages/Master/Master";
+import VehicleMaster from "./pages/Master/VehicleMaster";
 
 export default function App() {
   const [helpOpen, setHelpOpen] = useState(false);
@@ -26,9 +26,15 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={ <DashboardLayout helpOpen={helpOpen} setHelpOpen={setHelpOpen} /> } >
-          <Route path="/dashboard" element ={ <Dashboard/> }/>
-          <Route path="/master" element ={ <Master/> }/>
+        <Route
+          path="/dashboard"
+          element={
+            <DashboardLayout helpOpen={helpOpen} setHelpOpen={setHelpOpen} />
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="partymaster" element={<PartyMaster />} />
+          <Route path="vehiclemaster" element={<VehicleMaster />} />
         </Route>
       </Routes>
       <Toaster />

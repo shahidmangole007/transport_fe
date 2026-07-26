@@ -17,7 +17,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Dropdown } from "@/components/drop-down";
 import { DialogStickyFooter } from "@/components/DialogStickyFooter";
 import type { Dispatch, SetStateAction } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 type DashboardLayoutProps = {
   helpOpen: boolean;
@@ -28,6 +28,22 @@ export default function DashboardLayout({
   helpOpen,
   setHelpOpen,
 }: DashboardLayoutProps) {
+
+  const location =  useLocation()
+
+const breadcrumbMap: Record<string, string> = {
+  "/dashboard": "",
+  "/dashboard/partymaster": "Party Master",
+  "/dashboard/vehiclemaster": "Vehicle Master",
+};
+
+  console.log(location.pathname);
+  
+
+  const currentPath =  breadcrumbMap[location.pathname] || ""
+
+
+
   return (
     <>
       <SidebarProvider>
@@ -41,11 +57,13 @@ export default function DashboardLayout({
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem className="hidden md:block">
-                      <BreadcrumbLink href="#">Dashboard</BreadcrumbLink>
+                      <BreadcrumbLink >
+                       <Link to="/dashboard">Dashboard</Link>
+                      </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="hidden md:block" />
                     <BreadcrumbItem>
-                      <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                      <BreadcrumbPage>{currentPath}</BreadcrumbPage>
                     </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
