@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import { Toaster } from "./components/ui/sonner";
 import { useEffect, useState } from "react";
 import Dashboard from "./pages/Dashboard";
-import PartyMaster from "./pages/Master/Master";
+import PartyMaster from "./pages/Master/PartyMaster";
 import VehicleMaster from "./pages/Master/VehicleMaster";
 
 export default function App() {

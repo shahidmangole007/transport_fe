@@ -52,11 +52,11 @@ export function NavMain({
               <SidebarMenuSub>
                 {item.items?.map((subItem) => (
                   <SidebarMenuSubItem key={subItem.title}>
-                    <SidebarMenuSubButton >
                       <NavLink to={subItem.url}>
+                    <SidebarMenuSubButton >
                         <span>{subItem.title}</span>
-                      </NavLink>
                     </SidebarMenuSubButton>
+                      </NavLink>
                   </SidebarMenuSubItem>
                 ))}
               </SidebarMenuSub>
