@@ -1,0 +1,23 @@
+{
+  "partyMaster": {
+    "title": "Party Master",
+    "description": "Enter party's code, name and address.",
+    "partyCode": "Party Code",
+    "partyName": "Party Name",
+    "partyAddress": "Party Address",
+    "partyCodePlaceholder": "Party code",
+    "partyNamePlaceholder": "Party name",
+    "partyAddressPlaceholder": "Party address",
+    "common": {
+      "save": "Save",
+      "update": "Update",
+      "delete": "Delete",
+      "searchParty": "Search Party..."
+    },
+    "validation": {
+      "partyCodeRequired": "Party Code is required",
+      "partyNameMin": "Party Name must be at least 4 characters",
+      "partyAddressMin": "Party Address must be at least 4 characters"
+    }
+  }
+}

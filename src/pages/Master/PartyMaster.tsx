@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   SaveIcon,
   SavePlusIcon,
-  File,
-  Printer,
   Trash2,
   InfoIcon,
 } from "lucide-react";
@@ -18,31 +16,37 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PaginationButtons } from "@/components/PaginationButtons";
 import { useEffect, useRef, useState } from "react";
-import z from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
-
-const partyMasterSchema = z.object({
-  partyCode: z.string().min(1, "Party Code  is required"),
-  partyName: z.string().min(4, "Party Name must be at least 4 characters"),
-  partyAddress: z
-    .string()
-    .min(4, "Party Address must be at least 4 characters"),
-});
-
-type partyMasterFormData = z.infer<typeof partyMasterSchema>;
+import { useTranslation } from "react-i18next";
 
 export default function PartyMaster() {
+  const { t } = useTranslation();
+
+  const partyMasterSchema = z.object({
+    partyCode: z
+      .string()
+      .min(1, t("partyMaster.validation.partyCodeRequired")),
+    partyName: z
+      .string()
+      .min(4, t("partyMaster.validation.partyNameMin")),
+    partyAddress: z
+      .string()
+      .min(4, t("partyMaster.validation.partyAddressMin")),
+  });
+
+  type PartyMasterFormData = z.infer<typeof partyMasterSchema>;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<partyMasterFormData>({
+  } = useForm<PartyMasterFormData>({
     resolver: zodResolver(partyMasterSchema),
     defaultValues: {
       partyCode: "",
@@ -51,23 +55,22 @@ export default function PartyMaster() {
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+
   const [isShow, setIsShow] = useState(false);
-
-  const onSubmit = (data: partyMasterFormData) => {
-    console.log(data);
-  };
-
   const [search, setSearch] = useState("");
   const [parties, setParties] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
+
+  const onSubmit = (data: PartyMasterFormData) => {
+    console.log(data);
+  };
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       setLoading(true);
 
       try {
-        // const res : any = { "data" : [{}]} /* await partyService.search(search);*/
         const res = {
           data: [
             {
@@ -79,7 +82,6 @@ export default function PartyMaster() {
         };
 
         setParties(res.data);
-        setParties(res.data);
       } finally {
         setLoading(false);
       }
@@ -89,72 +91,91 @@ export default function PartyMaster() {
   }, [search]);
 
   return (
-    <div className="grid h-[100%] gap-4 md:grid-cols-[40%_59%]">
-      <div className="rounded-xl  justify-center ">
-        <Card className="  ">
+    <div className="grid h-full gap-4 md:grid-cols-[40%_59%]">
+      <div>
+        <Card>
           <CardHeader>
-            <CardTitle>Party Master</CardTitle>
+            <CardTitle>{t("partyMaster.title")}</CardTitle>
+
             <CardDescription>
-              Enter party's code, name and address.
+              {t("partyMaster.description")}
             </CardDescription>
+
             <CardAction>
               <Button
-                onClick={() => {
-                  setIsShow(!isShow);
-                }}
                 variant="outline"
                 size="icon"
+                onClick={() => setIsShow(!isShow)}
               >
                 <InfoIcon />
               </Button>
             </CardAction>
           </CardHeader>
+
           <CardContent>
             <form>
               <FieldGroup>
                 <div className="flex flex-col gap-6">
+                  {/* Party Code */}
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Party Code</Label>
+                    <Label htmlFor="code">
+                      {t("partyMaster.partyCode")}
+                    </Label>
+
                     <Input
                       id="code"
                       type="number"
-                      placeholder="party code"
-                      required
+                      placeholder={t(
+                        "partyMaster.partyCodePlaceholder"
+                      )}
                       {...register("partyCode")}
                     />
                   </div>
+
                   {errors.partyCode && (
-                    <p className="text-sm text-red-500 mt-1">
+                    <p className="text-sm text-red-500">
                       {errors.partyCode.message}
                     </p>
                   )}
+
+                  {/* Party Name */}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Party Name</Label>
+                    <Label htmlFor="name">
+                      {t("partyMaster.partyName")}
+                    </Label>
+
                     <Input
                       id="name"
-                      type="text"
-                      placeholder="party name"
-                      required
+                      placeholder={t(
+                        "partyMaster.partyNamePlaceholder"
+                      )}
                       {...register("partyName")}
                     />
                   </div>
+
                   {errors.partyName && (
-                    <p className="text-sm text-red-500 mt-1">
+                    <p className="text-sm text-red-500">
                       {errors.partyName.message}
                     </p>
                   )}
+
+                  {/* Party Address */}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Party Address</Label>
+                    <Label htmlFor="address">
+                      {t("partyMaster.partyAddress")}
+                    </Label>
+
                     <Input
                       id="address"
-                      type="text"
-                      placeholder="party address"
-                      required
+                      placeholder={t(
+                        "partyMaster.partyAddressPlaceholder"
+                      )}
                       {...register("partyAddress")}
                     />
                   </div>
+
                   {errors.partyAddress && (
-                    <p className="text-sm text-red-500 mt-1">
+                    <p className="text-sm text-red-500">
                       {errors.partyAddress.message}
                     </p>
                   )}
@@ -162,38 +183,40 @@ export default function PartyMaster() {
               </FieldGroup>
             </form>
           </CardContent>
-          <CardFooter className="flex justify- gap-2">
+
+          <CardFooter className="flex gap-2">
             <Button
-              onClick={handleSubmit(onSubmit)}
-              type="submit"
+              type="button"
               className="flex-1"
+              onClick={handleSubmit(onSubmit)}
             >
-              Save
-              <SaveIcon data-icon="inline-end" />
+              {t("partyMaster.common.save")}
+              <SaveIcon className="ml-2 h-4 w-4" />
             </Button>
+
             <Button variant="outline" className="flex-1">
-              Update
-              <SavePlusIcon data-icon="inline-end" />
+              {t("partyMaster.common.update")}
+              <SavePlusIcon className="ml-2 h-4 w-4" />
             </Button>
 
             <Button variant="destructive" className="flex-1">
-              Delete
-              <Trash2 data-icon="inline-end" />
+              {t("partyMaster.common.delete")}
+              <Trash2 className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
-          {/* <PaginationButtons /> */}
         </Card>
       </div>
 
       {isShow && (
-        <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
-          <CardHeader className="">
-            <CardTitle>Party Master</CardTitle>
+        <Card ref={infoRef} className="p-0 pt-3 rounded-xl flex-1">
+          <CardHeader>
+            <CardTitle>{t("partyMaster.title")}</CardTitle>
+
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search Party..."
+                placeholder={t("partyMaster.common.searchParty")}
                 resultCount={parties.length}
               />
             </div>
