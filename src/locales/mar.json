@@ -1,0 +1,23 @@
+{
+  "partyMaster": {
+    "title": "पार्टी मास्टर",
+    "description": "पार्टीचा कोड, नाव आणि पत्ता प्रविष्ट करा.",
+    "partyCode": "पार्टी कोड",
+    "partyName": "पार्टीचे नाव",
+    "partyAddress": "पार्टीचा पत्ता",
+    "partyCodePlaceholder": "पार्टी कोड",
+    "partyNamePlaceholder": "पार्टीचे नाव",
+    "partyAddressPlaceholder": "पार्टीचा पत्ता",
+    "common": {
+      "save": "जतन करा",
+      "update": "सुधारित करा",
+      "delete": "हटवा",
+      "searchParty": "पार्टी शोधा..."
+    },
+    "validation": {
+      "partyCodeRequired": "पार्टी कोड आवश्यक आहे",
+      "partyNameMin": "पार्टीचे नाव किमान ४ अक्षरांचे असावे",
+      "partyAddressMin": "पार्टीचा पत्ता किमान ४ अक्षरांचा असावा"
+    }
+  }
+}
