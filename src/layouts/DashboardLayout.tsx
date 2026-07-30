@@ -26,6 +26,9 @@ const breadcrumbMap: Record<string, string> = {
   "/dashboard": "",
   "/dashboard/partymaster": "Party Master",
   "/dashboard/vehiclemaster": "Vehicle Master",
+  "/dashboard/citymaster": "City Master",
+  "/dashboard/drivermaster": "Driver Master",
+  "/dashboard/productdetailsmaster": "Product Details Master",
 };
 
   console.log(location.pathname);

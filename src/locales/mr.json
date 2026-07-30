@@ -1,0 +1,26 @@
+{
+  "common": {
+    "save": "जतन करा",
+    "update": "सुधारणा",
+    "delete": "हटवा",
+    "search": "शोधा",
+    "code": "कोड",
+    "name": "नाव"
+  },
+
+  "cityMaster": {
+    "title": "शहर माहिती",
+    "description": "शहराचा कोड आणि नाव प्रविष्ट करा.",
+    "cityCode": "शहर कोड",
+    "cityName": "शहराचे नाव",
+    "searchPlaceholder": "शहर शोधा..."
+  },
+
+  "driverMaster": {
+    "title": "चालक माहिती",
+    "description": "चालकाचा कोड आणि नाव प्रविष्ट करा.",
+    "driverCode": "चालक कोड",
+    "driverName": "चालकाचे नाव",
+    "searchPlaceholder": "चालक शोधा..."
+  }
+}

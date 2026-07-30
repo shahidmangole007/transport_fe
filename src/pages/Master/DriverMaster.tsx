@@ -27,39 +27,36 @@ import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
 
-const vehicleMasterSchema = z.object({
-  vehicleCode: z.string().min(1, "Vehicle Code  is required"),
-  vehicleNumber: z.string().min(4, "Vehicle Number is required"),
-  vehicleOwner: z
-    .string()
-    .min(4, "Vehicle Owner Name is required"),
+const driverMasterSchema = z.object({
+  driverCode: z.string().min(1, "Driver Code  is required"),
+  driverName: z.string().min(4, "Driver Name is required"),
+  
 });
 
-type vehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
+type driverMasterFormData = z.infer<typeof driverMasterSchema>;
 
-export default function VehicleMaster() {
+export default function DriverMaster() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<vehicleMasterFormData>({
-    resolver: zodResolver(vehicleMasterSchema),
+  } = useForm<driverMasterFormData>({
+    resolver: zodResolver(driverMasterSchema),
     defaultValues: {
-      vehicleCode: "",
-      vehicleNumber: "",
-      vehicleOwner: "",
+      driverCode: "",
+      driverName: "",
     },
   });
 
   const infoRef = useRef<HTMLIFrameElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  const onSubmit = (data: vehicleMasterFormData) => {
+  const onSubmit = (data: driverMasterFormData) => {
     console.log(data);
   };
 
   const [search, setSearch] = useState("");
-  const [vehicles, setVehicles] = useState<any[]>([]);
+  const [drivers, setDrivers] = useState<any[]>([]);
   const [parties, setParties] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -72,15 +69,14 @@ export default function VehicleMaster() {
         const res = {
           data: [
             {
-              vehicleCode : "P001",
-              vehicleNumber: "ABC Traders",
-              vehicleOwner: "Kolhapur",
+              driverCode: "P001",
+              driverName: "ABC Traders",
             },
           ],
         };
 
-        setVehicles(res.data);
-        setVehicles(res.data);
+        setDrivers(res.data);
+        setDrivers(res.data);
       } finally {
         setLoading(false);
       }
@@ -94,9 +90,9 @@ export default function VehicleMaster() {
       <div className="rounded-xl  justify-center ">
         <Card className="  ">
           <CardHeader>
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>Driver Master</CardTitle>
             <CardDescription>
-              Enter vehicle's code, number and owner name.
+              Enter driver's code and name.
             </CardDescription>
             <CardAction>
               <Button
@@ -111,54 +107,40 @@ export default function VehicleMaster() {
             </CardAction>
           </CardHeader>
           <CardContent>
-            <form>  
+            <form>
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Vehicle Code</Label>
+                    <Label htmlFor="code">Driver Code</Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="vehicle code"
+                      placeholder="driver code"
                       required
-                      {...register("vehicleCode")} 
+                      {...register("driverCode")}
                     />
                   </div>
-                  {errors.vehicleCode && (
+                  {errors.driverCode && (
                     <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleCode.message}
+                      {errors.driverCode.message}
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Vehicle Register Number</Label>
+                    <Label htmlFor="name">Driver Name</Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="vehicle number"
+                      placeholder="driver name"
                       required
-                      {...register("vehicleNumber")}
+                      {...register("driverName")}
                     />
                   </div>
-                  {errors.vehicleNumber && (
+                  {errors.driverName && (
                     <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleNumber.message}
+                      {errors.driverName.message}
                     </p>
                   )}
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Owner Name of Vehicle</Label>
-                    <Input
-                      id="address"
-                      type="text"
-                      placeholder="owner name"
-                      required
-                      {...register("vehicleOwner")}
-                    />
-                  </div>
-                  {errors.vehicleOwner && (
-                    <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleOwner.message}
-                    </p>
-                  )}
+                  
                 </div>
               </FieldGroup>
             </form>
@@ -189,13 +171,13 @@ export default function VehicleMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>Driver Master</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search Vehicle..."
-                resultCount={vehicles.length}
+                placeholder="Search Driver..."
+                resultCount={drivers.length}
               />
             </div>
           </CardHeader>

@@ -27,60 +27,54 @@ import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
 
-const vehicleMasterSchema = z.object({
-  vehicleCode: z.string().min(1, "Vehicle Code  is required"),
-  vehicleNumber: z.string().min(4, "Vehicle Number is required"),
-  vehicleOwner: z
-    .string()
-    .min(4, "Vehicle Owner Name is required"),
+const productDetailsMasterSchema = z.object({
+  itemCode: z.string().min(1, "Item Code  is required"),
+  itemName: z.string().min(4, "Item Name is required"),
+  
 });
 
-type vehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
+type productDetailsMasterFormData = z.infer<typeof productDetailsMasterSchema>;
 
-export default function VehicleMaster() {
+export default function ProductDetailsMaster() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<vehicleMasterFormData>({
-    resolver: zodResolver(vehicleMasterSchema),
+  } = useForm<productDetailsMasterFormData>({
+    resolver: zodResolver(productDetailsMasterSchema),
     defaultValues: {
-      vehicleCode: "",
-      vehicleNumber: "",
-      vehicleOwner: "",
+      itemCode: "",
+      itemName: "",
     },
   });
 
   const infoRef = useRef<HTMLIFrameElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  const onSubmit = (data: vehicleMasterFormData) => {
+  const onSubmit = (data: productDetailsMasterFormData) => {
     console.log(data);
   };
 
   const [search, setSearch] = useState("");
-  const [vehicles, setVehicles] = useState<any[]>([]);
-  const [parties, setParties] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]); 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       setLoading(true);
 
-      try {
-        // const res : any = { "data" : [{}]} /* await partyService.search(search);*/
+      try {  
         const res = {
           data: [
             {
-              vehicleCode : "P001",
-              vehicleNumber: "ABC Traders",
-              vehicleOwner: "Kolhapur",
+              itemCode: "P001",
+              itemName: "ABC Traders",  
             },
           ],
         };
 
-        setVehicles(res.data);
-        setVehicles(res.data);
+        setProducts(res.data);
+        setProducts(res.data);
       } finally {
         setLoading(false);
       }
@@ -94,9 +88,9 @@ export default function VehicleMaster() {
       <div className="rounded-xl  justify-center ">
         <Card className="  ">
           <CardHeader>
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>Product Details Master</CardTitle>
             <CardDescription>
-              Enter vehicle's code, number and owner name.
+              Enter product details.
             </CardDescription>
             <CardAction>
               <Button
@@ -111,54 +105,40 @@ export default function VehicleMaster() {
             </CardAction>
           </CardHeader>
           <CardContent>
-            <form>  
+            <form>
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Vehicle Code</Label>
+                    <Label htmlFor="code">Item Code</Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="vehicle code"
+                      placeholder="item code"
                       required
-                      {...register("vehicleCode")} 
+                      {...register("itemCode")}
                     />
                   </div>
-                  {errors.vehicleCode && (
+                  {errors.itemCode && (
                     <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleCode.message}
+                      {errors.itemCode.message}
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Vehicle Register Number</Label>
+                    <Label htmlFor="name">Item Name</Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="vehicle number"
+                      placeholder="item name"
                       required
-                      {...register("vehicleNumber")}
+                      {...register("itemName")}
                     />
                   </div>
-                  {errors.vehicleNumber && (
+                  {errors.itemName && (
                     <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleNumber.message}
+                      {errors.itemName.message}
                     </p>
                   )}
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Owner Name of Vehicle</Label>
-                    <Input
-                      id="address"
-                      type="text"
-                      placeholder="owner name"
-                      required
-                      {...register("vehicleOwner")}
-                    />
-                  </div>
-                  {errors.vehicleOwner && (
-                    <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleOwner.message}
-                    </p>
-                  )}
+                  
                 </div>
               </FieldGroup>
             </form>
@@ -189,13 +169,13 @@ export default function VehicleMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>City Master</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search Vehicle..."
-                resultCount={vehicles.length}
+                placeholder="Search City..."
+                resultCount={products.length}
               />
             </div>
           </CardHeader>
