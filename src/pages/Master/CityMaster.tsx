@@ -26,21 +26,29 @@ import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
+import { useTranslation } from "react-i18next";
 
-const cityMasterSchema = z.object({
-  cityCode: z.string().min(1, "City Code  is required"),
-  cityName: z.string().min(4, "City Name is required"),
-  
-});
-
-type cityMasterFormData = z.infer<typeof cityMasterSchema>;
 
 export default function CityMaster() {
+  const { t } = useTranslation();
+  
+  const cityMasterSchema = z.object({
+    cityCode: z
+      .string()
+      .min(1, t("cityMaster.validation.cityCodeRequired")),
+
+    cityName: z
+      .string()
+      .min(4, t("cityMaster.validation.cityNameMin")),
+  });
+
+  type CityMasterFormData = z.infer<typeof cityMasterSchema>;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<cityMasterFormData>({
+  } = useForm<CityMasterFormData>({
     resolver: zodResolver(cityMasterSchema),
     defaultValues: {
       cityCode: "",
@@ -48,7 +56,7 @@ export default function CityMaster() {
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
 
   const onSubmit = (data: cityMasterFormData) => {
@@ -90,7 +98,7 @@ export default function CityMaster() {
       <div className="rounded-xl  justify-center ">
         <Card className="  ">
           <CardHeader>
-            <CardTitle>City Master</CardTitle>
+            <CardTitle>{t("cityMaster.title")}</CardTitle>
             <CardDescription>
               Enter city's code and name.
             </CardDescription>
@@ -111,11 +119,13 @@ export default function CityMaster() {
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">City Code</Label>
+                    <Label htmlFor="code">
+                      {t("cityMaster.cityCode")}
+                    </Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="city code"
+                      placeholder={t("cityMaster.cityCodePlaceholder")}
                       required
                       {...register("cityCode")}
                     />
@@ -126,11 +136,13 @@ export default function CityMaster() {
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">City Name</Label>
+                    <Label htmlFor="name">
+                      {t("cityMaster.cityName")}
+                    </Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="city name"
+                      placeholder={t("cityMaster.cityNamePlaceholder")}
                       required
                       {...register("cityName")}
                     />
@@ -151,17 +163,17 @@ export default function CityMaster() {
               type="submit"
               className="flex-1"
             >
-              Save
-              <SaveIcon data-icon="inline-end" />
+              {t("cityMaster.common.save")}
+              <SaveIcon className="ml-2 h-4 w-4" />
             </Button>
             <Button variant="outline" className="flex-1">
-              Update
-              <SavePlusIcon data-icon="inline-end" />
+              {t("cityMaster.common.update")}
+              <SavePlusIcon className="ml-2 h-4 w-4" />
             </Button>
 
             <Button variant="destructive" className="flex-1">
-              Delete
-              <Trash2 data-icon="inline-end" />
+              {t("cityMaster.common.delete")}
+              <Trash2 className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
           {/* <PaginationButtons /> */}
@@ -171,12 +183,12 @@ export default function CityMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>City Master</CardTitle>
+            <CardTitle>{t("cityMaster.title")}</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search City..."
+                placeholder={t("cityMaster.common.searchCity")}
                 resultCount={cities.length}
               />
             </div>

@@ -19,5 +19,105 @@
       "partyNameMin": "Party Name must be at least 4 characters",
       "partyAddressMin": "Party Address must be at least 4 characters"
     }
+  },
+
+  
+  "cityMaster": {
+    "title": "City Master",
+    "description": "Enter city code and city name.",
+
+    "cityCode": "City Code",
+    "cityName": "City Name",
+
+    "cityCodePlaceholder": "City Code",
+    "cityNamePlaceholder": "City Name",
+
+    "common": {
+      "save": "Save",
+      "update": "Update",
+      "delete": "Delete",
+      "searchCity": "Search City..."
+    },
+
+    "validation": {
+      "cityCodeRequired": "City Code is required",
+      "cityNameMin": "City Name must be at least 4 characters"
+    }
+  },
+
+
+  "driverMaster": {
+    "title": "Driver Master",
+    "description": "Enter driver's code and name.",
+
+    "driverCode": "Driver Code",
+    "driverName": "Driver Name",
+
+    "driverCodePlaceholder": "Driver Code",
+    "driverNamePlaceholder": "Driver Name",
+
+    "common": {
+      "save": "Save",
+      "update": "Update",
+      "delete": "Delete",
+      "searchDriver": "Search Driver..."
+    },
+
+    "validation": {
+      "driverCodeRequired": "Driver Code is required",
+      "driverNameMin": "Driver Name must be at least 4 characters"
+    }
+  },
+
+  "productDetailsMaster": {
+    "title": "Product Details Master",
+    "description": "Enter product details.",
+
+    "itemCode": "Item Code",
+    "itemName": "Item Name",
+
+    "itemCodePlaceholder": "Item Code",
+    "itemNamePlaceholder": "Item Name",
+
+    "common": {
+      "save": "Save",
+      "update": "Update",
+      "delete": "Delete",
+      "searchProduct": "Search Product..."
+    },
+
+    "validation": {
+      "itemCodeRequired": "Item Code is required",
+      "itemNameMin": "Item Name must be at least 4 characters"
+    }
+  },
+
+  "vehicleMaster": {
+    "title": "Vehicle Master",
+    "description": "Enter vehicle's code, number and owner name.",
+
+    "vehicleCode": "Vehicle Code",
+    "vehicleNumber": "Vehicle Register Number",
+    "vehicleOwner": "Owner Name of Vehicle",
+
+    "vehicleCodePlaceholder": "Vehicle Code",
+    "vehicleNumberPlaceholder": "Vehicle Register Number",
+    "vehicleOwnerPlaceholder": "Owner Name",
+
+    "common": {
+      "save": "Save",
+      "update": "Update",
+      "delete": "Delete",
+      "searchVehicle": "Search Vehicle..."
+    },
+
+    "validation": {
+      "vehicleCodeRequired": "Vehicle Code is required",
+      "vehicleNumberMin": "Vehicle Register Number must be at least 4 characters",
+      "vehicleOwnerMin": "Vehicle Owner Name must be at least 4 characters"
+    }
   }
+
 }
+  
+

@@ -19,5 +19,103 @@
       "partyNameMin": "पार्टीचे नाव किमान ४ अक्षरांचे असावे",
       "partyAddressMin": "पार्टीचा पत्ता किमान ४ अक्षरांचा असावा"
     }
+  },
+
+  
+  "cityMaster": {
+    "title": "सिटी मास्टर",
+    "description": "शहराचा कोड आणि नाव प्रविष्ट करा.",
+
+    "cityCode": "शहर कोड",
+    "cityName": "शहराचे नाव",
+
+    "cityCodePlaceholder": "शहर कोड",
+    "cityNamePlaceholder": "शहराचे नाव",
+
+    "common": {
+      "save": "जतन करा",
+      "update": "सुधारित करा",
+      "delete": "हटवा",
+      "searchCity": "शहर शोधा..."
+    },
+
+    "validation": {
+      "cityCodeRequired": "शहर कोड आवश्यक आहे",
+      "cityNameMin": "शहराचे नाव किमान ४ अक्षरांचे असावे"
+    }
+  },
+  
+  "driverMaster": {
+    "title": "ड्रायव्हर मास्टर",
+    "description": "ड्रायव्हरचा कोड आणि नाव प्रविष्ट करा.",
+
+    "driverCode": "ड्रायव्हर कोड",
+    "driverName": "ड्रायव्हरचे नाव",
+
+    "driverCodePlaceholder": "ड्रायव्हर कोड",
+    "driverNamePlaceholder": "ड्रायव्हरचे नाव",
+
+    "common": {
+      "save": "जतन करा",
+      "update": "सुधारित करा",
+      "delete": "हटवा",
+      "searchDriver": "ड्रायव्हर शोधा..."
+    },
+
+    "validation": {
+      "driverCodeRequired": "ड्रायव्हर कोड आवश्यक आहे",
+      "driverNameMin": "ड्रायव्हरचे नाव किमान ४ अक्षरांचे असावे"
+    }
+  },
+
+  "productDetailsMaster": {
+    "title": "उत्पादन तपशील मास्टर",
+    "description": "उत्पादनाचा तपशील प्रविष्ट करा.",
+
+    "itemCode": "वस्तू कोड",
+    "itemName": "वस्तूचे नाव",
+
+    "itemCodePlaceholder": "वस्तू कोड",
+    "itemNamePlaceholder": "वस्तूचे नाव",
+
+    "common": {
+      "save": "जतन करा",
+      "update": "सुधारित करा",
+      "delete": "हटवा",
+      "searchProduct": "उत्पादन शोधा..."
+    },
+
+    "validation": {
+      "itemCodeRequired": "वस्तू कोड आवश्यक आहे",
+      "itemNameMin": "वस्तूचे नाव किमान ४ अक्षरांचे असावे"
+    }
+  },
+
+  "vehicleMaster": {
+    "title": "वाहन मास्टर",
+    "description": "वाहनाचा कोड, नोंदणी क्रमांक आणि मालकाचे नाव प्रविष्ट करा.",
+
+    "vehicleCode": "वाहन कोड",
+    "vehicleNumber": "वाहन नोंदणी क्रमांक",
+    "vehicleOwner": "वाहन मालकाचे नाव",
+
+    "vehicleCodePlaceholder": "वाहन कोड",
+    "vehicleNumberPlaceholder": "वाहन नोंदणी क्रमांक",
+    "vehicleOwnerPlaceholder": "वाहन मालकाचे नाव",
+
+    "common": {
+      "save": "जतन करा",
+      "update": "सुधारित करा",
+      "delete": "हटवा",
+      "searchVehicle": "वाहन शोधा..."
+    },
+
+    "validation": {
+      "vehicleCodeRequired": "वाहन कोड आवश्यक आहे",
+      "vehicleNumberMin": "वाहन नोंदणी क्रमांक किमान ४ अक्षरांचा असावा",
+      "vehicleOwnerMin": "वाहन मालकाचे नाव किमान ४ अक्षरांचे असावे"
+    }
   }
+
 }
+

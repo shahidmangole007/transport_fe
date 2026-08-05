@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   SaveIcon,
   SavePlusIcon,
-  File,
-  Printer,
   Trash2,
   InfoIcon,
 } from "lucide-react";
@@ -26,21 +24,31 @@ import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
+import { useTranslation } from "react-i18next";
 
-const driverMasterSchema = z.object({
-  driverCode: z.string().min(1, "Driver Code  is required"),
-  driverName: z.string().min(4, "Driver Name is required"),
-  
-});
-
-type driverMasterFormData = z.infer<typeof driverMasterSchema>;
 
 export default function DriverMaster() {
+
+  const { t } = useTranslation();
+
+const driverMasterSchema = z.object({
+  driverCode: z
+    .string()
+    .min(1, t("driverMaster.validation.driverCodeRequired")),
+
+  driverName: z
+    .string()
+    .min(4, t("driverMaster.validation.driverNameMin")),
+});
+
+type DriverMasterFormData = z.infer<typeof driverMasterSchema>;
+
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<driverMasterFormData>({
+  } = useForm<DriverMasterFormData>({
     resolver: zodResolver(driverMasterSchema),
     defaultValues: {
       driverCode: "",
@@ -48,10 +56,10 @@ export default function DriverMaster() {
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  const onSubmit = (data: driverMasterFormData) => {
+  const onSubmit = (data: DriverMasterFormData) => {
     console.log(data);
   };
 
@@ -90,9 +98,9 @@ export default function DriverMaster() {
       <div className="rounded-xl  justify-center ">
         <Card className="  ">
           <CardHeader>
-            <CardTitle>Driver Master</CardTitle>
+            <CardTitle>{t("driverMaster.title")}</CardTitle>
             <CardDescription>
-              Enter driver's code and name.
+              {t("driverMaster.description")}
             </CardDescription>
             <CardAction>
               <Button
@@ -111,11 +119,13 @@ export default function DriverMaster() {
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Driver Code</Label>
+                    <Label htmlFor="code">
+                      {t("driverMaster.driverCode")}
+                    </Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="driver code"
+                      placeholder={t("driverMaster.driverCodePlaceholder")}
                       required
                       {...register("driverCode")}
                     />
@@ -126,11 +136,13 @@ export default function DriverMaster() {
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Driver Name</Label>
+                    <Label htmlFor="name">
+                      {t("driverMaster.driverName")}
+                    </Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="driver name"
+                      placeholder={t("driverMaster.driverNamePlaceholder")}
                       required
                       {...register("driverName")}
                     />
@@ -151,17 +163,17 @@ export default function DriverMaster() {
               type="submit"
               className="flex-1"
             >
-              Save
-              <SaveIcon data-icon="inline-end" />
+              {t("driverMaster.common.save")}
+              <SaveIcon className="ml-2 h-4 w-4" />
             </Button>
             <Button variant="outline" className="flex-1">
               Update
-              <SavePlusIcon data-icon="inline-end" />
+              <SavePlusIcon className="ml-2 h-4 w-4" />
             </Button>
 
             <Button variant="destructive" className="flex-1">
               Delete
-              <Trash2 data-icon="inline-end" />
+              <Trash2 className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
           {/* <PaginationButtons /> */}
@@ -171,12 +183,12 @@ export default function DriverMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>Driver Master</CardTitle>
+            <CardTitle>{t("driverMaster.title")}</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search Driver..."
+                placeholder={t("driverMaster.common.searchDriver")}
                 resultCount={drivers.length}
               />
             </div>

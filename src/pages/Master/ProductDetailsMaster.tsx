@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   SaveIcon,
   SavePlusIcon,
-  File,
-  Printer,
   Trash2,
   InfoIcon,
 } from "lucide-react";
@@ -26,21 +24,32 @@ import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
+import { useTranslation } from "react-i18next";
 
-const productDetailsMasterSchema = z.object({
-  itemCode: z.string().min(1, "Item Code  is required"),
-  itemName: z.string().min(4, "Item Name is required"),
-  
-});
-
-type productDetailsMasterFormData = z.infer<typeof productDetailsMasterSchema>;
 
 export default function ProductDetailsMaster() {
+
+  const { t } = useTranslation();
+
+  const productDetailsMasterSchema = z.object({
+    itemCode: z
+      .string()
+      .min(1, t("productDetailsMaster.validation.itemCodeRequired")),
+
+    itemName: z
+      .string()
+      .min(4, t("productDetailsMaster.validation.itemNameMin")),
+  });
+
+  type ProductDetailsMasterFormData = z.infer<
+    typeof productDetailsMasterSchema
+  >;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<productDetailsMasterFormData>({
+  } = useForm<ProductDetailsMasterFormData>({
     resolver: zodResolver(productDetailsMasterSchema),
     defaultValues: {
       itemCode: "",
@@ -48,10 +57,10 @@ export default function ProductDetailsMaster() {
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  const onSubmit = (data: productDetailsMasterFormData) => {
+  const onSubmit = (data: ProductDetailsMasterFormData) => {
     console.log(data);
   };
 
@@ -84,13 +93,13 @@ export default function ProductDetailsMaster() {
   }, [search]);
 
   return (
-    <div className="grid h-[100%] gap-4 md:grid-cols-[40%_59%]">
-      <div className="rounded-xl  justify-center ">
+    <div className="grid h-full gap-4 md:grid-cols-[40%_59%]">
+      <div>
         <Card className="  ">
           <CardHeader>
-            <CardTitle>Product Details Master</CardTitle>
+            <CardTitle>{t("productDetailsMaster.title")}</CardTitle>
             <CardDescription>
-              Enter product details.
+              {t("productDetailsMaster.description")}
             </CardDescription>
             <CardAction>
               <Button
@@ -109,11 +118,11 @@ export default function ProductDetailsMaster() {
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Item Code</Label>
+                    <Label htmlFor="code">{t("productDetailsMaster.itemCode")}</Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="item code"
+                      placeholder={t("productDetailsMaster.itemCodePlaceholder")}
                       required
                       {...register("itemCode")}
                     />
@@ -124,11 +133,11 @@ export default function ProductDetailsMaster() {
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Item Name</Label>
+                    <Label htmlFor="name">{t("productDetailsMaster.itemName")}</Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="item name"
+                      placeholder={t("productDetailsMaster.itemNamePlaceholder")}
                       required
                       {...register("itemName")}
                     />
@@ -149,17 +158,17 @@ export default function ProductDetailsMaster() {
               type="submit"
               className="flex-1"
             >
-              Save
-              <SaveIcon data-icon="inline-end" />
+              {t("productDetailsMaster.common.save")}
+              <SaveIcon className="ml-2 h-4 w-4" />
             </Button>
             <Button variant="outline" className="flex-1">
-              Update
-              <SavePlusIcon data-icon="inline-end" />
+              {t("productDetailsMaster.common.update")}
+              <SavePlusIcon className="ml-2 h-4 w-4" />
             </Button>
 
             <Button variant="destructive" className="flex-1">
-              Delete
-              <Trash2 data-icon="inline-end" />
+              {t("productDetailsMaster.common.delete")}
+              <Trash2 className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
           {/* <PaginationButtons /> */}
@@ -169,12 +178,12 @@ export default function ProductDetailsMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>City Master</CardTitle>
+            <CardTitle>{t("productDetailsMaster.title")}</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search City..."
+                placeholder={t("productDetailsMaster.common.searchProduct")}
                 resultCount={products.length}
               />
             </div>

@@ -67,21 +67,17 @@ const data = {
       title: "Transactions",
       url: "#",
       icon: (
-        <BotIcon
+        <TerminalSquareIcon
         />
       ),
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "Lorry Receipt",
+          url: "/dashboard/lorryreceipt",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
+          title: "Memo Entry",
+          url: "/dashboard/memoentry",
         },
       ],
     },

@@ -26,23 +26,34 @@ import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
+import { useTranslation } from "react-i18next";
 
-const vehicleMasterSchema = z.object({
-  vehicleCode: z.string().min(1, "Vehicle Code  is required"),
-  vehicleNumber: z.string().min(4, "Vehicle Number is required"),
-  vehicleOwner: z
-    .string()
-    .min(4, "Vehicle Owner Name is required"),
-});
-
-type vehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
 
 export default function VehicleMaster() {
+
+  const { t } = useTranslation();
+
+  const vehicleMasterSchema = z.object({
+    vehicleCode: z
+      .string()
+      .min(1, t("vehicleMaster.validation.vehicleCodeRequired")),
+
+    vehicleNumber: z
+      .string()
+      .min(4, t("vehicleMaster.validation.vehicleNumberMin")),
+
+    vehicleOwner: z
+      .string()
+      .min(4, t("vehicleMaster.validation.vehicleOwnerMin")),
+  });
+
+  type VehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
+    
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<vehicleMasterFormData>({
+  } = useForm<VehicleMasterFormData>({
     resolver: zodResolver(vehicleMasterSchema),
     defaultValues: {
       vehicleCode: "",
@@ -51,10 +62,10 @@ export default function VehicleMaster() {
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  const onSubmit = (data: vehicleMasterFormData) => {
+  const onSubmit = (data: VehicleMasterFormData) => {
     console.log(data);
   };
 
@@ -90,13 +101,13 @@ export default function VehicleMaster() {
   }, [search]);
 
   return (
-    <div className="grid h-[100%] gap-4 md:grid-cols-[40%_59%]">
-      <div className="rounded-xl  justify-center ">
+    <div className="grid h-full gap-4 md:grid-cols-[40%_59%]">
+      <div >
         <Card className="  ">
           <CardHeader>
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>{t("vehicleMaster.title")}</CardTitle>
             <CardDescription>
-              Enter vehicle's code, number and owner name.
+              {t("vehicleMaster.description")}
             </CardDescription>
             <CardAction>
               <Button
@@ -115,11 +126,11 @@ export default function VehicleMaster() {
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Vehicle Code</Label>
+                    <Label htmlFor="code">{t("vehicleMaster.vehicleCode")}</Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="vehicle code"
+                      placeholder={t("vehicleMaster.vehicleCodePlaceholder")}
                       required
                       {...register("vehicleCode")} 
                     />
@@ -130,11 +141,11 @@ export default function VehicleMaster() {
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Vehicle Register Number</Label>
+                    <Label htmlFor="name">{t("vehicleMaster.vehicleNumber")}</Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="vehicle number"
+                      placeholder={t("vehicleMaster.vehicleNumberPlaceholder")}
                       required
                       {...register("vehicleNumber")}
                     />
@@ -145,11 +156,11 @@ export default function VehicleMaster() {
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Owner Name of Vehicle</Label>
+                    <Label htmlFor="address">{t("vehicleMaster.vehicleOwner")}</Label>
                     <Input
                       id="address"
                       type="text"
-                      placeholder="owner name"
+                      placeholder={t("vehicleMaster.vehicleOwnerPlaceholder")}
                       required
                       {...register("vehicleOwner")}
                     />
@@ -163,23 +174,23 @@ export default function VehicleMaster() {
               </FieldGroup>
             </form>
           </CardContent>
-          <CardFooter className="flex justify- gap-2">
+          <CardFooter className="flex gap-2">
             <Button
               onClick={handleSubmit(onSubmit)}
-              type="submit"
+              type="button"
               className="flex-1"
             >
-              Save
-              <SaveIcon data-icon="inline-end" />
+              {t("partyMaster.common.save")}
+              <SaveIcon className="ml-2 h-4 w-4" />
             </Button>
             <Button variant="outline" className="flex-1">
-              Update
-              <SavePlusIcon data-icon="inline-end" />
+              {t("partyMaster.common.update")}
+              <SavePlusIcon className="ml-2 h-4 w-4" />
             </Button>
 
             <Button variant="destructive" className="flex-1">
-              Delete
-              <Trash2 data-icon="inline-end" />
+              {t("partyMaster.common.delete")}  
+              <Trash2 className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
           {/* <PaginationButtons /> */}
@@ -189,12 +200,12 @@ export default function VehicleMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>{t("vehicleMaster.title")}</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search Vehicle..."
+                placeholder={t("vehicleMaster.common.searchVehicle")}
                 resultCount={vehicles.length}
               />
             </div>
