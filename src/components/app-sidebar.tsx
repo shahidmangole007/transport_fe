@@ -50,13 +50,21 @@ const data = {
           url: "/dashboard/vehiclemaster",
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "City Master",
+          url: "/dashboard/citymaster",
+        },
+        {
+          title: "Driver Master",
+          url: "/dashboard/drivermaster",
+        },
+        {
+          title: "Product Details Master",
+          url: "/dashboard/productdetailsmaster",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Transactions",
       url: "#",
       icon: (
         <BotIcon
@@ -78,7 +86,7 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Reports",
       url: "#",
       icon: (
         <BookOpenIcon

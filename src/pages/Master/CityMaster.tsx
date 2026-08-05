@@ -27,39 +27,36 @@ import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
 
-const vehicleMasterSchema = z.object({
-  vehicleCode: z.string().min(1, "Vehicle Code  is required"),
-  vehicleNumber: z.string().min(4, "Vehicle Number is required"),
-  vehicleOwner: z
-    .string()
-    .min(4, "Vehicle Owner Name is required"),
+const cityMasterSchema = z.object({
+  cityCode: z.string().min(1, "City Code  is required"),
+  cityName: z.string().min(4, "City Name is required"),
+  
 });
 
-type vehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
+type cityMasterFormData = z.infer<typeof cityMasterSchema>;
 
-export default function VehicleMaster() {
+export default function CityMaster() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<vehicleMasterFormData>({
-    resolver: zodResolver(vehicleMasterSchema),
+  } = useForm<cityMasterFormData>({
+    resolver: zodResolver(cityMasterSchema),
     defaultValues: {
-      vehicleCode: "",
-      vehicleNumber: "",
-      vehicleOwner: "",
+      cityCode: "",
+      cityName: "",
     },
   });
 
   const infoRef = useRef<HTMLIFrameElement>(null);
   const [isShow, setIsShow] = useState(false);
 
-  const onSubmit = (data: vehicleMasterFormData) => {
+  const onSubmit = (data: cityMasterFormData) => {
     console.log(data);
   };
 
   const [search, setSearch] = useState("");
-  const [vehicles, setVehicles] = useState<any[]>([]);
+  const [cities, setCities] = useState<any[]>([]);
   const [parties, setParties] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -72,15 +69,14 @@ export default function VehicleMaster() {
         const res = {
           data: [
             {
-              vehicleCode : "P001",
-              vehicleNumber: "ABC Traders",
-              vehicleOwner: "Kolhapur",
+              cityCode: "P001",
+              cityName: "ABC Traders",
             },
           ],
         };
 
-        setVehicles(res.data);
-        setVehicles(res.data);
+        setCities(res.data);
+        setCities(res.data);
       } finally {
         setLoading(false);
       }
@@ -94,9 +90,9 @@ export default function VehicleMaster() {
       <div className="rounded-xl  justify-center ">
         <Card className="  ">
           <CardHeader>
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>City Master</CardTitle>
             <CardDescription>
-              Enter vehicle's code, number and owner name.
+              Enter city's code and name.
             </CardDescription>
             <CardAction>
               <Button
@@ -111,54 +107,40 @@ export default function VehicleMaster() {
             </CardAction>
           </CardHeader>
           <CardContent>
-            <form>  
+            <form>
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">Vehicle Code</Label>
+                    <Label htmlFor="code">City Code</Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder="vehicle code"
+                      placeholder="city code"
                       required
-                      {...register("vehicleCode")} 
+                      {...register("cityCode")}
                     />
                   </div>
-                  {errors.vehicleCode && (
+                  {errors.cityCode && (
                     <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleCode.message}
+                      {errors.cityCode.message}
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">Vehicle Register Number</Label>
+                    <Label htmlFor="name">City Name</Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder="vehicle number"
+                      placeholder="city name"
                       required
-                      {...register("vehicleNumber")}
+                      {...register("cityName")}
                     />
                   </div>
-                  {errors.vehicleNumber && (
+                  {errors.cityName && (
                     <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleNumber.message}
+                      {errors.cityName.message}
                     </p>
                   )}
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Owner Name of Vehicle</Label>
-                    <Input
-                      id="address"
-                      type="text"
-                      placeholder="owner name"
-                      required
-                      {...register("vehicleOwner")}
-                    />
-                  </div>
-                  {errors.vehicleOwner && (
-                    <p className="text-sm text-red-500 mt-1">
-                      {errors.vehicleOwner.message}
-                    </p>
-                  )}
+                  
                 </div>
               </FieldGroup>
             </form>
@@ -189,13 +171,13 @@ export default function VehicleMaster() {
       {isShow && (
         <Card ref={infoRef} className="p-0 pt-3   rounded-xl flex-1 ">
           <CardHeader className="">
-            <CardTitle>Vehicle Master</CardTitle>
+            <CardTitle>City Master</CardTitle>
             <div className="mt-3 w-full">
               <Searchbar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search Vehicle..."
-                resultCount={vehicles.length}
+                placeholder="Search City..."
+                resultCount={cities.length}
               />
             </div>
           </CardHeader>
