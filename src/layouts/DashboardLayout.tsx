@@ -40,7 +40,7 @@ const breadcrumbMap: Record<string, string> = {
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
-          <header className="flex h-16 shrink-0 items-center  gap-2 border-b">
+          <header className="flex h-16 shrink-0 items-center  gap-2 border-b  ">
             <div className=" w-full flex items-center justify-between p-2">
               <div className="flex items-center gap-2 px-3 ">
                 <SidebarTrigger />
@@ -66,6 +66,7 @@ const breadcrumbMap: Record<string, string> = {
               </div>
             </div>
           </header>
+          {/* <div className="flex flex-1 flex-col gap-4 p-4 bg-fuchsia-900"> */}
           <div className="flex flex-1 flex-col gap-4 p-4 bg-fuchsia-900">
             {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
               <div className="aspect-video rounded-xl bg-muted/50" />
