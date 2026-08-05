@@ -11,32 +11,39 @@
   "cityMaster": {
     "title": "City Master",
     "description": "Enter city's code and name.",
+
     "cityCode": "City Code",
+    "cityCodePlaceholder": "Enter city code",
+
     "cityName": "City Name",
-    "searchPlaceholder": "Search City..."
-  },
+    "cityNamePlaceholder": "Enter city name",
+
+    "searchPlaceholder": "Search City...",
+
+    "validation": {
+      "cityCodeRequired": "City Code is required",
+      "cityNameRequired": "City Name is required"
+    }
+
+},
 
   "driverMaster": {
     "title": "Driver Master",
     "description": "Enter driver's code and name.",
+
     "driverCode": "Driver Code",
+    "driverCodePlaceholder": "Enter driver code",
+
     "driverName": "Driver Name",
-    "searchPlaceholder": "Search Driver..."
-  },
+    "driverNamePlaceholder": "Enter driver name",
 
-  "partyMaster": {
-    "title": "Party Master",
-    "description": "Enter party code and name.",
-    "partyCode": "Party Code",
-    "partyName": "Party Name",
-    "searchPlaceholder": "Search Party..."
-  },
+    "searchPlaceholder": "Search Driver...",
 
-  "vehicleMaster": {
-    "title": "Vehicle Master",
-    "description": "Enter vehicle details.",
-    "vehicleNo": "Vehicle Number",
-    "vehicleType": "Vehicle Type",
-    "searchPlaceholder": "Search Vehicle..."
+    "validation": {
+      "driverCodeRequired": "Driver Code is required",
+      "driverNameRequired": "Driver Name is required"
+    }
   }
+  
+
 }
