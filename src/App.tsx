@@ -9,6 +9,8 @@ import VehicleMaster from "./pages/Master/VehicleMaster";
 import CityMaster from "./pages/Master/CityMaster";
 import DriverMaster from "./pages/Master/DriverMaster";
 import ProductDetailsMaster from "./pages/Master/ProductDetailsMaster";
+import Login2 from "./pages/Login2";
+import DemoMaster from "./pages/Master/DemoMaster";
 
 export default function App() {
 
@@ -19,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
 
         <Route  path="/login" element={<Login />} />
+        <Route  path="/login2" element={<Login2 />} />
         <Route
           path="/dashboard"
           element={
@@ -31,6 +34,7 @@ export default function App() {
           <Route path="citymaster" element={<CityMaster />} />
           <Route path="drivermaster" element={<DriverMaster />} />
           <Route path="productdetailsmaster" element={<ProductDetailsMaster />} />
+          <Route path="demomaster" element={<DemoMaster />} />
         </Route>
       </Routes>
       <Toaster />
