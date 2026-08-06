@@ -16,9 +16,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import data from "../../data/data.json";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PaginationButtons } from "@/components/PaginationButtons";
 import { useEffect, useRef, useState } from "react";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,11 +27,13 @@ import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
+import { DataTable } from "@/components/data-table";
+import { getCities } from "@/api/city.api";
+import type { City } from "@/types/city";
 
 const cityMasterSchema = z.object({
   cityCode: z.string().min(1, "City Code  is required"),
   cityName: z.string().min(4, "City Name is required"),
-  
 });
 
 type cityMasterFormData = z.infer<typeof cityMasterSchema>;
@@ -56,34 +59,32 @@ export default function CityMaster() {
   };
 
   const [search, setSearch] = useState("");
-  const [cities, setCities] = useState<any[]>([]);
-  const [parties, setParties] = useState<any[]>([]);
+  const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(async () => {
+    const fetchCities = async () => {
       setLoading(true);
 
       try {
-        // const res : any = { "data" : [{}]} /* await partyService.search(search);*/
-        const res = {
-          data: [
-            {
-              cityCode: "P001",
-              cityName: "ABC Traders",
-            },
-          ],
-        };
+        const data = await getCities();
 
-        setCities(res.data);
-        setCities(res.data);
+        console.log("API Response:", data);
+
+        setCities(data);
+      } catch (error) {
+        console.error("Failed to fetch cities:", error);
       } finally {
         setLoading(false);
       }
-    }, 300);
+    };
 
-    return () => clearTimeout(timer);
-  }, [search]);
+    fetchCities();
+  }, []);
+
+  useEffect(() => {
+    console.log("Cities State Updated:", cities);
+  }, [cities]);
 
   return (
     <div className="grid h-[100%] gap-4 md:grid-cols-[40%_59%]">
@@ -91,9 +92,7 @@ export default function CityMaster() {
         <Card className="  ">
           <CardHeader>
             <CardTitle>City Master</CardTitle>
-            <CardDescription>
-              Enter city's code and name.
-            </CardDescription>
+            <CardDescription>Enter city's code and name.</CardDescription>
             <CardAction>
               <Button
                 onClick={() => {
@@ -109,39 +108,36 @@ export default function CityMaster() {
           <CardContent>
             <form>
               <FieldGroup>
-                <div className="flex flex-col gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="code">City Code</Label>
-                    <Input
-                      id="code"
-                      type="number"
-                      placeholder="city code"
-                      required
-                      {...register("cityCode")}
-                    />
-                  </div>
-                  {errors.cityCode && (
-                    <p className="text-sm text-red-500 mt-1">
-                      {errors.cityCode.message}
-                    </p>
-                  )}
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">City Name</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      placeholder="city name"
-                      required
-                      {...register("cityName")}
-                    />
-                  </div>
-                  {errors.cityName && (
-                    <p className="text-sm text-red-500 mt-1">
-                      {errors.cityName.message}
-                    </p>
-                  )}
-                  
-                </div>
+                <Field data-invalid={errors.cityCode ? true : undefined}>
+                  <FieldLabel htmlFor="code">City Code</FieldLabel>
+
+                  <Input
+                    type="number"
+                    id="code"
+                    placeholder="Enter city code"
+                    required
+                    {...register("cityCode")}
+                    aria-invalid={errors.cityCode ? true : undefined}
+                  />
+
+                  <FieldDescription>
+                    {errors.cityCode?.message}
+                  </FieldDescription>
+                </Field>
+
+                <Field data-invalid={errors.cityName ? true : undefined}>
+                  <FieldLabel htmlFor="name">City Name</FieldLabel>
+                  <Input
+                    id="name"
+                    placeholder="Enter city name"
+                    required
+                    {...register("cityName")}
+                    aria-invalid={errors.cityName ? true : undefined}
+                  />
+                  <FieldDescription>
+                    {errors.cityName?.message}
+                  </FieldDescription>
+                </Field>
               </FieldGroup>
             </form>
           </CardContent>
@@ -182,7 +178,8 @@ export default function CityMaster() {
             </div>
           </CardHeader>
 
-          <TableWithFooter />
+          {/* <TableWithFooter /> */}
+          <DataTable data={data} />
         </Card>
       )}
     </div>

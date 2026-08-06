@@ -337,7 +337,8 @@ function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
 export function DataTable({
   data: initialData,
 }: {
-  data: z.infer<typeof schema>[]
+  data: any[]
+  // data: z.infer<typeof schema>[]
 }) {
   const [data, setData] = React.useState(() => initialData)
   const [rowSelection, setRowSelection] = React.useState({})
@@ -625,6 +626,11 @@ export function DataTable({
     </Tabs>
   )
 }
+
+
+
+
+
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
