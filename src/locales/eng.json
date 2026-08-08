@@ -19,5 +19,33 @@
       "partyNameMin": "Party Name must be at least 4 characters",
       "partyAddressMin": "Party Address must be at least 4 characters"
     }
+  },
+  "cityMaster": {
+    "insert": {
+      "title": "Add City",
+      "description": "Add a city to city master.",
+      "savePlaceHolher": "Enter city name",
+      "successAlertTitle" : "City updated successfully",
+      "successAlertDescription" : " Your city information has been updated. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to update"
+    },
+    "edit": {
+      "title": "Edit City",
+      "description": "Update your city information.",
+      "cityCodeFeild" : "City Code",
+      "cityNameFeild" : "City Name",
+      "cityNameFeildPlaceHolder" : "Enter city name",
+      "successAlertTitle" : "City updated successfully",
+      "successAlertDescription" : " Your city information has been updated. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to update"
+
+    }
+  },
+  "common": {
+    "submit": "Submit",
+    "update": "Update",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel"
   }
 }
