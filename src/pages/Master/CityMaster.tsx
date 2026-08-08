@@ -68,27 +68,27 @@ const columns: any = [
   },
 ];
 
-const cityMasterSchema = z.object({
-  cityName: z
-    .string()
-    .min(2, "City Name is required")
-    .min(2, "City Name must be at least 2 characters"),
-});
-
-const cityMasterUpdateSchema = z.object({
-  cityCode: z.number(),
-  cityName: z
-    .string()
-    .min(2, "City Name is required")
-    .min(2, "City Name must be at least 2 characters"),
-});
-
-type cityMasterFormData = z.infer<typeof cityMasterSchema>;
-type cityMasterUpdateFormData = z.infer<typeof cityMasterUpdateSchema>;
 
 export default function CityMaster() {
+  const { t } = useTranslation();
 
-    const { t } = useTranslation();
+  const cityMasterSchema = z.object({
+    cityName: z
+      .string()
+      .min(2, t("cityMaster.validation.cityNameRequired"))
+      .min(2, t("cityMaster.validation.cityNameMinlength")),
+  });
+
+  const cityMasterUpdateSchema = z.object({
+    cityCode: z.number(),
+    cityName: z
+      .string()
+      .min(2, t("cityMaster.validation.cityNameRequired"))
+      .min(2, t("cityMaster.validation.cityNameMinlength")),
+  });
+
+  type cityMasterFormData = z.infer<typeof cityMasterSchema>;
+  type cityMasterUpdateFormData = z.infer<typeof cityMasterUpdateSchema>;
 
   const {
     register: registerAdd,
@@ -181,7 +181,7 @@ export default function CityMaster() {
 
       setTimeout(() => {
         setShowAlert(false);
-      }, 3000);
+      }, 5000);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setErrorMessage(
@@ -196,7 +196,7 @@ export default function CityMaster() {
       setSubmitLoading(false);
       setTimeout(() => {
         setErrorMessage(null);
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -216,7 +216,7 @@ export default function CityMaster() {
 
       setTimeout(() => {
         setShowAlert(false);
-      }, 3000);
+      }, 5000);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setErrorMessage(
@@ -231,7 +231,7 @@ export default function CityMaster() {
       setUpdateLoading(false);
       setTimeout(() => {
         setErrorMessage(null);
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -315,16 +315,19 @@ export default function CityMaster() {
           <Card className="max-w-full min-w-md  max-h-fit">
             <CardHeader>
               <CardTitle>{t("cityMaster.edit.title")}</CardTitle>
-              <CardDescription>{t("cityMaster.edit.description")}</CardDescription>
+              <CardDescription>
+                {t("cityMaster.edit.description")}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Field data-invalid={updateErrors.cityCode ? true : undefined}>
-                <FieldLabel htmlFor="code">{t("cityMaster.edit.cityCodeFeild")}</FieldLabel>
+                <FieldLabel htmlFor="code">
+                  {t("cityMaster.edit.cityCodeFeild")}
+                </FieldLabel>
                 <Input
                   id="code"
                   readOnly
                   type="number"
-          
                   required
                   {...registerUpdate("cityCode", { valueAsNumber: true })}
                   // aria-invalid={updateErrors.cityName ? true : undefined}
@@ -335,7 +338,9 @@ export default function CityMaster() {
               </Field>
 
               <Field data-invalid={updateErrors.cityName ? true : undefined}>
-                <FieldLabel htmlFor="name">{t("cityMaster.edit.cityNameFeild")}</FieldLabel>
+                <FieldLabel htmlFor="name">
+                  {t("cityMaster.edit.cityNameFeild")}
+                </FieldLabel>
                 <Input
                   id="name"
                   placeholder={t("cityMaster.edit.cityNameFeildPlaceHolder")}
@@ -355,21 +360,23 @@ export default function CityMaster() {
                   onClick={handleCancel}
                   className="flex-1"
                 >
-                   {t("common.cancel")}
+                  {t("common.cancel")}
                 </Button>
 
                 <Button type="submit" className="flex-1">
                   {updateLoading && <Spinner data-icon="inline-start" />}
-                   {t("common.update")}
+                  {t("common.update")}
                 </Button>
               </div>
 
               {showAlert && (
                 <Alert className="max-w-md mt-2 text-green-500">
                   <CheckCircle2Icon />
-                  <AlertTitle>{t("cityMaster.edit.successAlertTitle")}</AlertTitle>
+                  <AlertTitle>
+                    {t("cityMaster.edit.successAlertTitle")}
+                  </AlertTitle>
                   <AlertDescription>
-                  {t("cityMaster.edit.successAlertDescription")}
+                    {t("cityMaster.edit.successAlertDescription")}
                   </AlertDescription>
                 </Alert>
               )}
@@ -389,7 +396,9 @@ export default function CityMaster() {
           <Card className="max-w-sm min-w-sm w-full max-h-fit">
             <CardHeader>
               <CardTitle>{t("cityMaster.insert.title")}</CardTitle>
-              <CardDescription>{t("cityMaster.insert.description")}</CardDescription>
+              <CardDescription>
+                {t("cityMaster.insert.description")}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Field data-invalid={addErrors.cityName ? true : undefined}>
@@ -414,9 +423,11 @@ export default function CityMaster() {
               {showAlert && (
                 <Alert className="max-w-md mt-2 text-green-500">
                   <CheckCircle2Icon />
-                  <AlertTitle>{t("cityMaster.insert.successAlertTitle")}</AlertTitle>
+                  <AlertTitle>
+                    {t("cityMaster.insert.successAlertTitle")}
+                  </AlertTitle>
                   <AlertDescription>
-                   {t("cityMaster.insert.successAlertDescription")}
+                    {t("cityMaster.insert.successAlertDescription")}
                   </AlertDescription>
                 </Alert>
               )}
@@ -424,7 +435,9 @@ export default function CityMaster() {
               {errorMessage && (
                 <Alert variant={"destructive"} className="max-w-md mt-2 ">
                   <AlertCircleIcon />
-                  <AlertTitle>{t("cityMaster.insert.failAlertTitle")}</AlertTitle>
+                  <AlertTitle>
+                    {t("cityMaster.insert.failAlertTitle")}
+                  </AlertTitle>
                   <AlertDescription>{errorMessage}</AlertDescription>
                 </Alert>
               )}
@@ -465,26 +478,29 @@ export default function CityMaster() {
           {deleteStatus === "confirm" && (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>Delete City?</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {t("cityMaster.common.alertTitle")}
+                </AlertDialogTitle>
 
                 <AlertDialogDescription>
-                  Are you sure you want to delete{" "}
-                  <strong>{cityToDelete?.name}</strong>? This action cannot be
-                  undone.
+                  {t("cityMaster.common.deleteConfirm1")}{" "}
+                  <strong>{cityToDelete?.name}</strong>?
+                  {t("cityMaster.common.deleteConfirm2")}
                 </AlertDialogDescription>
               </AlertDialogHeader>
 
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
 
                 <AlertDialogAction
+                  variant={"destructive"}
                   onClick={() => {
                     if (cityToDelete) {
                       handleDelete(cityToDelete);
                     }
                   }}
                 >
-                  Delete
+                  {t("common.delete")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </>
@@ -493,10 +509,13 @@ export default function CityMaster() {
           {deleteStatus === "success" && (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>City Deleted Successfully</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {t("cityMaster.common.successDeleteTitle")}
+                </AlertDialogTitle>
 
                 <AlertDialogDescription>
-                  {cityToDelete?.name} has been deleted successfully.
+                  {cityToDelete?.name}{" "}
+                  {t("cityMaster.common.hasBeenDeletedSuccessfully")}
                 </AlertDialogDescription>
               </AlertDialogHeader>
 
@@ -507,7 +526,7 @@ export default function CityMaster() {
                     setCityToDelete(null);
                   }}
                 >
-                  OK
+                  {t("cityMaster.common.ok")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </>
@@ -516,7 +535,9 @@ export default function CityMaster() {
           {deleteStatus === "error" && (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>Failed to Delete City</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {t("cityMaster.common.failureDeleteTitle")}
+                </AlertDialogTitle>
 
                 <AlertDialogDescription>{errorMessage}</AlertDialogDescription>
               </AlertDialogHeader>
@@ -528,7 +549,7 @@ export default function CityMaster() {
                     setCityToDelete(null);
                   }}
                 >
-                  Cancel
+                  {t("cityMaster.common.cancel")}
                 </AlertDialogCancel>
 
                 <AlertDialogAction
@@ -539,7 +560,7 @@ export default function CityMaster() {
                     }
                   }}
                 >
-                  Try Again
+                  {t("cityMaster.common.cancel")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </>

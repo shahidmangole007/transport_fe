@@ -22,23 +22,84 @@
   },
   "cityMaster": {
     "insert": {
-      "title": "Add City",
+      "title": "Add City Info",
       "description": "Add a city to city master.",
       "savePlaceHolher": "Enter city name",
-      "successAlertTitle" : "City updated successfully",
-      "successAlertDescription" : " Your city information has been updated. Changes will be reflected immediately.",
-       "failAlertTitle" : "Failed to update"
+      "successAlertTitle" : "City saved successfully",
+      "successAlertDescription" : " Your city information has been saved. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to saved"
     },
     "edit": {
-      "title": "Edit City",
+      "title": "Edit City Info",
       "description": "Update your city information.",
       "cityCodeFeild" : "City Code",
       "cityNameFeild" : "City Name",
       "cityNameFeildPlaceHolder" : "Enter city name",
-      "successAlertTitle" : "City updated successfully",
+      "successAlertTitle" : "City Info updated successfully",
       "successAlertDescription" : " Your city information has been updated. Changes will be reflected immediately.",
        "failAlertTitle" : "Failed to update"
 
+    },
+
+    "validation": {
+  "cityNameRequired": "City Name is required",
+  "cityNameMinlength": "City Name must be at least 2 characters"
+},
+    "common":{
+      "search" : "Search City Info",
+      "alertTitle" : "Delete City Info?",
+      "successDeleteTitle" :"City Info Deleted Successfully",
+      "ok" :"OK",
+      "failureDeleteTitle" :"Failed to delete City Info ",
+      "deleteConfirm1" : "Are you sure you want to delete",
+      "deleteConfirm2" : "This action cannot be undone.",
+      "cancel" :"Cancel",
+      "tryAgain" :"Try Again",
+      "hasBeenDeletedSuccessfully": "has been deleted successfully."
+    }
+  },
+    "vehicleMaster": {
+    "insert": {
+      "title": "Add Vehicle Info",
+      "description": "Add a vehicle info to vehicle master.",
+      "vehicleNumberFeild" : "Vehicle Number",
+      "vehicleOwnerFeild" : "Vehicle Owner Name",
+      "vehicleNumberPlaceHolder": "Enter vehicle number",
+      "vehicleOwnerPlaceHolder": "Enter vehicle owner name",
+      "successAlertTitle" : "Vehicle Info saved successfully",
+      "successAlertDescription" : " Your vehicle information has been saved. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to saved."
+    },
+    "edit": {
+      "title": "Edit Vehicle Info",
+      "description": "Edit a vehicle info to vehicle master.",
+      "vehicleCodeFeild" : "Vehicle Code",
+      "vehicleNumberFeild" : "Vehicle Number",
+      "vehicleOwnerFeild" : "Vehicle Owner Name",
+      "vehicleNumberPlaceHolder": "Enter vehicle number",
+      "vehicleOwnerPlaceHolder": "Enter vehicle owner name",
+      "successAlertTitle" : "Vehicle Info updated successfully",
+      "successAlertDescription" : " Your vehicle information has been updated. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to updated."
+    } ,
+    "validation":{
+      "vehicleNameRequired" : "Vehicle Number is required",
+      "vehicleNameMinlength" : "Vehicle Number must be at least 4 characters",
+      "vehicleOwnerNameRequired" : "Ownername is required",
+      "vehicleOwnerNameMinlength" : "Ownername  must be at least 4 characters"
+    },
+    "common":{
+      "search" : "Search Vehicle Info",
+      "alertTitle" : "Delete Vehicle Info?",
+      "successDeleteTitle" :"Vehicle Info Deleted Successfully",
+      "ok" :"OK",
+      "failureDeleteTitle" :"Failed to delete Vehicle Info ",
+      "deleteConfirm1" : "Are you sure you want to delete",
+      "deleteConfirm2" : "This action cannot be undone.",
+
+      "cancel" :"Cancel",
+      "tryAgain" :"Try Again",
+      "hasBeenDeletedSuccessfully": "has been deleted successfully."
     }
   },
   "common": {

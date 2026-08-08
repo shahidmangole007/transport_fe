@@ -38,6 +38,68 @@
       "successAlertTitle": "शहराची माहिती यशस्वीरित्या अद्ययावत झाली",
       "successAlertDescription": "शहराची माहिती यशस्वीरित्या अद्ययावत करण्यात आली आहे. केलेले बदल त्वरित लागू होतील.",
       "failAlertTitle": "शहराची माहिती अद्ययावत करण्यात अयशस्वी"
+    },
+    "validation": {
+      "cityNameRequired": "शहराचे नाव आवश्यक आहे",
+      "cityNameMinlength": "शहराचे नाव किमान २ अक्षरांचे असणे आवश्यक आहे"
+    },
+    "common": {
+      "search": "शहराची माहिती शोधा",
+      "alertTitle": "शहराची माहिती हटवायची आहे का?",
+      "successDeleteTitle": "शहराची माहिती यशस्वीरित्या हटवली",
+      "ok": "ठीक आहे",
+      "failureDeleteTitle": "शहराची माहिती हटवता आली नाही",
+      "deleteConfirm1": "तुम्हाला हे हटवायचे आहे याची खात्री आहे का?",
+      "deleteConfirm2": "ही कृती पूर्ववत करता येणार नाही.",
+      "cancel": "रद्द करा",
+      "tryAgain": "पुन्हा प्रयत्न करा",
+      "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवले गेले आहे."
+    }
+  },
+  "vehicleMaster": {
+    "insert": {
+      "title": "वाहनाची माहिती जोडा",
+      "description": "वाहन मास्टरमध्ये वाहनाची माहिती जोडा.",
+      "vehicleNumberFeild": "वाहन क्रमांक",
+      "vehicleOwnerFeild": "वाहन मालकाचे नाव",
+      "vehicleNumberPlaceHolder": "वाहन क्रमांक प्रविष्ट करा",
+      "vehicleOwnerPlaceHolder": "वाहन मालकाचे नाव प्रविष्ट करा",
+      "successAlertTitle": "वाहनाची माहिती यशस्वीरित्या जतन झाली",
+      "successAlertDescription": "तुमच्या वाहनाची माहिती यशस्वीरित्या जतन झाली आहे. केलेले बदल तत्काळ लागू होतील.",
+      "failAlertTitle": "वाहनाची माहिती जतन करण्यात अयशस्वी"
+    },
+
+    "edit": {
+      "title": "वाहनाची माहिती संपादित करा",
+      "description": "वाहन मास्टरमधील वाहनाची माहिती संपादित करा.",
+      "vehicleCodeFeild": "वाहन कोड",
+      "vehicleNumberFeild": "वाहन क्रमांक",
+      "vehicleOwnerFeild": "वाहन मालकाचे नाव",
+      "vehicleNumberPlaceHolder": "वाहन क्रमांक प्रविष्ट करा",
+      "vehicleOwnerPlaceHolder": "वाहन मालकाचे नाव प्रविष्ट करा",
+      "successAlertTitle": "वाहनाची माहिती यशस्वीरित्या अद्ययावत झाली",
+      "successAlertDescription": "तुमच्या वाहनाची माहिती यशस्वीरित्या अद्ययावत झाली आहे. केलेले बदल तत्काळ लागू होतील.",
+      "failAlertTitle": "वाहनाची माहिती अद्ययावत करण्यात अयशस्वी"
+    },
+
+    "validation": {
+      "vehicleNameRequired": "वाहन क्रमांक आवश्यक आहे",
+      "vehicleNameMinlength": "वाहन क्रमांक किमान ४ अक्षरांचा असणे आवश्यक आहे",
+      "vehicleOwnerNameRequired": "वाहन मालकाचे नाव आवश्यक आहे",
+      "vehicleOwnerNameMinlength": "वाहन मालकाचे नाव किमान ४ अक्षरांचे असणे आवश्यक आहे"
+    },
+
+    "common": {
+      "search": "वाहनाची माहिती शोधा",
+      "alertTitle": "वाहनाची माहिती हटवायची आहे का?",
+      "successDeleteTitle": "वाहनाची माहिती यशस्वीरित्या हटवली",
+      "ok": "ठीक आहे",
+      "failureDeleteTitle": "वाहनाची माहिती हटवता आली नाही",
+      "deleteConfirm1": "तुम्हाला हे हटवायचे आहे याची खात्री आहे का?",
+      "deleteConfirm2": "ही कृती पूर्ववत करता येणार नाही.",
+      "cancel": "रद्द करा",
+      "tryAgain": "पुन्हा प्रयत्न करा",
+      "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवले गेले आहे."
     }
   },
   "common": {
@@ -48,5 +110,3 @@
     "cancel": "रद्द करा"
   }
 }
-
-
