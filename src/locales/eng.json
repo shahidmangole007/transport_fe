@@ -108,5 +108,35 @@
     "edit": "Edit",
     "delete": "Delete",
     "cancel": "Cancel"
+  },
+  "sidebar" :{
+    "master": {
+      "master": "Master",
+      "partyMaster" : "Party Master",
+      "vehicleMaster" : "Vehicle Master",
+      "cityMaster" : "City Master",
+      "driverMaster" : "Driver Master",
+      "productMaster" : "Product Master"
+    },
+    "transactions":{
+      "transactions" :"Transactions",
+      "builty" : "Builty",
+      "memo":  "Memo Entry"
+    },
+    "reports":{
+      "reports" : "Reports"
+    },
+    "settings" :{
+      "settings": "Settings"
+    },
+    "shortcuts" :{
+        "shortcuts" : "Shortcuts"
+    },
+    "help" :{
+      "help" : "Help"
+    }
   }
 }
+
+
+

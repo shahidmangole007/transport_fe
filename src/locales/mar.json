@@ -108,5 +108,37 @@
     "edit": "संपादित करा",
     "delete": "हटवा",
     "cancel": "रद्द करा"
+  },
+  "sidebar": {
+  "master": {
+    "master": "मास्टर",
+    "partyMaster": "पार्टी मास्टर",
+    "vehicleMaster": "वाहन मास्टर",
+    "cityMaster": "शहर मास्टर",
+    "driverMaster": "ड्रायव्हर मास्टर",
+    "productMaster": "प्रॉडक्ट मास्टर"
+  },
+
+  "transactions": {
+    "transactions": "व्यवहार",
+    "builty": "बिल्टी",
+    "memo": "मेमो नोंद"
+  },
+
+  "reports": {
+    "reports": "अहवाल"
+  },
+
+  "settings": {
+    "settings": "सेटिंग्ज"
+  },
+
+  "shortcuts": {
+    "shortcuts": "शॉर्टकट"
+  },
+
+  "help": {
+    "help": "मदत"
   }
+}
 }
