@@ -20,138 +20,125 @@
       "partyAddressMin": "पार्टीचा पत्ता किमान ४ अक्षरांचा असावा"
     }
   },
-
-  
   "cityMaster": {
-    "title": "सिटी मास्टर",
-    "description": "शहराचा कोड आणि नाव प्रविष्ट करा.",
-
-    "cityCode": "शहर कोड",
-    "cityName": "शहराचे नाव",
-
-    "cityCodePlaceholder": "शहर कोड",
-    "cityNamePlaceholder": "शहराचे नाव",
-
-    "common": {
-      "save": "जतन करा",
-      "update": "सुधारित करा",
-      "delete": "हटवा",
-      "searchCity": "शहर शोधा..."
+    "insert": {
+      "title": "शहर समाविष्ट करा",
+      "description": "शहर मास्टरमध्ये नवीन शहर समाविष्ट करा.",
+      "savePlaceHolher": "शहराचे नाव प्रविष्ट करा",
+      "successAlertTitle": "शहर यशस्वीरित्या समाविष्ट झाले",
+      "successAlertDescription": "शहराची माहिती यशस्वीरित्या जतन करण्यात आली आहे. केलेले बदल त्वरित लागू होतील.",
+      "failAlertTitle": "शहर समाविष्ट करण्यात अयशस्वी"
     },
-
+    "edit": {
+      "title": "शहराची माहिती अद्ययावत करा",
+      "description": "शहराची माहिती अद्ययावत करा.",
+      "cityCodeFeild": "शहर क्रमांक",
+      "cityNameFeild": "शहराचे नाव",
+      "cityNameFeildPlaceHolder": "शहराचे नाव प्रविष्ट करा",
+      "successAlertTitle": "शहराची माहिती यशस्वीरित्या अद्ययावत झाली",
+      "successAlertDescription": "शहराची माहिती यशस्वीरित्या अद्ययावत करण्यात आली आहे. केलेले बदल त्वरित लागू होतील.",
+      "failAlertTitle": "शहराची माहिती अद्ययावत करण्यात अयशस्वी"
+    },
     "validation": {
-      "cityCodeRequired": "शहर कोड आवश्यक आहे",
-      "cityNameMin": "शहराचे नाव किमान ४ अक्षरांचे असावे"
+      "cityNameRequired": "शहराचे नाव आवश्यक आहे",
+      "cityNameMinlength": "शहराचे नाव किमान २ अक्षरांचे असणे आवश्यक आहे"
+    },
+    "common": {
+      "search": "शहराची माहिती शोधा",
+      "alertTitle": "शहराची माहिती हटवायची आहे का?",
+      "successDeleteTitle": "शहराची माहिती यशस्वीरित्या हटवली",
+      "ok": "ठीक आहे",
+      "failureDeleteTitle": "शहराची माहिती हटवता आली नाही",
+      "deleteConfirm1": "तुम्हाला हे हटवायचे आहे याची खात्री आहे का?",
+      "deleteConfirm2": "ही कृती पूर्ववत करता येणार नाही.",
+      "cancel": "रद्द करा",
+      "tryAgain": "पुन्हा प्रयत्न करा",
+      "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवले गेले आहे."
     }
   },
-  
-  "driverMaster": {
-    "title": "ड्रायव्हर मास्टर",
-    "description": "ड्रायव्हरचा कोड आणि नाव प्रविष्ट करा.",
-
-    "driverCode": "ड्रायव्हर कोड",
-    "driverName": "ड्रायव्हरचे नाव",
-
-    "driverCodePlaceholder": "ड्रायव्हर कोड",
-    "driverNamePlaceholder": "ड्रायव्हरचे नाव",
-
-    "common": {
-      "save": "जतन करा",
-      "update": "सुधारित करा",
-      "delete": "हटवा",
-      "searchDriver": "ड्रायव्हर शोधा..."
-    },
-
-    "validation": {
-      "driverCodeRequired": "ड्रायव्हर कोड आवश्यक आहे",
-      "driverNameMin": "ड्रायव्हरचे नाव किमान ४ अक्षरांचे असावे"
-    }
-  },
-
-  "productDetailsMaster": {
-    "title": "उत्पादन तपशील मास्टर",
-    "description": "उत्पादनाचा तपशील प्रविष्ट करा.",
-
-    "itemCode": "वस्तू कोड",
-    "itemName": "वस्तूचे नाव",
-
-    "itemCodePlaceholder": "वस्तू कोड",
-    "itemNamePlaceholder": "वस्तूचे नाव",
-
-    "common": {
-      "save": "जतन करा",
-      "update": "सुधारित करा",
-      "delete": "हटवा",
-      "searchProduct": "उत्पादन शोधा..."
-    },
-
-    "validation": {
-      "itemCodeRequired": "वस्तू कोड आवश्यक आहे",
-      "itemNameMin": "वस्तूचे नाव किमान ४ अक्षरांचे असावे"
-    }
-  },
-
   "vehicleMaster": {
-    "title": "वाहन मास्टर",
-    "description": "वाहनाचा कोड, नोंदणी क्रमांक आणि मालकाचे नाव प्रविष्ट करा.",
+    "insert": {
+      "title": "वाहनाची माहिती जोडा",
+      "description": "वाहन मास्टरमध्ये वाहनाची माहिती जोडा.",
+      "vehicleNumberFeild": "वाहन क्रमांक",
+      "vehicleOwnerFeild": "वाहन मालकाचे नाव",
+      "vehicleNumberPlaceHolder": "वाहन क्रमांक प्रविष्ट करा",
+      "vehicleOwnerPlaceHolder": "वाहन मालकाचे नाव प्रविष्ट करा",
+      "successAlertTitle": "वाहनाची माहिती यशस्वीरित्या जतन झाली",
+      "successAlertDescription": "तुमच्या वाहनाची माहिती यशस्वीरित्या जतन झाली आहे. केलेले बदल तत्काळ लागू होतील.",
+      "failAlertTitle": "वाहनाची माहिती जतन करण्यात अयशस्वी"
+    },
 
-    "vehicleCode": "वाहन कोड",
-    "vehicleNumber": "वाहन नोंदणी क्रमांक",
-    "vehicleOwner": "वाहन मालकाचे नाव",
-
-    "vehicleCodePlaceholder": "वाहन कोड",
-    "vehicleNumberPlaceholder": "वाहन नोंदणी क्रमांक",
-    "vehicleOwnerPlaceholder": "वाहन मालकाचे नाव",
-
-    "common": {
-      "save": "जतन करा",
-      "update": "सुधारित करा",
-      "delete": "हटवा",
-      "searchVehicle": "वाहन शोधा..."
+    "edit": {
+      "title": "वाहनाची माहिती संपादित करा",
+      "description": "वाहन मास्टरमधील वाहनाची माहिती संपादित करा.",
+      "vehicleCodeFeild": "वाहन कोड",
+      "vehicleNumberFeild": "वाहन क्रमांक",
+      "vehicleOwnerFeild": "वाहन मालकाचे नाव",
+      "vehicleNumberPlaceHolder": "वाहन क्रमांक प्रविष्ट करा",
+      "vehicleOwnerPlaceHolder": "वाहन मालकाचे नाव प्रविष्ट करा",
+      "successAlertTitle": "वाहनाची माहिती यशस्वीरित्या अद्ययावत झाली",
+      "successAlertDescription": "तुमच्या वाहनाची माहिती यशस्वीरित्या अद्ययावत झाली आहे. केलेले बदल तत्काळ लागू होतील.",
+      "failAlertTitle": "वाहनाची माहिती अद्ययावत करण्यात अयशस्वी"
     },
 
     "validation": {
-      "vehicleCodeRequired": "वाहन कोड आवश्यक आहे",
-      "vehicleNumberMin": "वाहन नोंदणी क्रमांक किमान ४ अक्षरांचा असावा",
-      "vehicleOwnerMin": "वाहन मालकाचे नाव किमान ४ अक्षरांचे असावे"
+      "vehicleNameRequired": "वाहन क्रमांक आवश्यक आहे",
+      "vehicleNameMinlength": "वाहन क्रमांक किमान ४ अक्षरांचा असणे आवश्यक आहे",
+      "vehicleOwnerNameRequired": "वाहन मालकाचे नाव आवश्यक आहे",
+      "vehicleOwnerNameMinlength": "वाहन मालकाचे नाव किमान ४ अक्षरांचे असणे आवश्यक आहे"
+    },
+
+    "common": {
+      "search": "वाहनाची माहिती शोधा",
+      "alertTitle": "वाहनाची माहिती हटवायची आहे का?",
+      "successDeleteTitle": "वाहनाची माहिती यशस्वीरित्या हटवली",
+      "ok": "ठीक आहे",
+      "failureDeleteTitle": "वाहनाची माहिती हटवता आली नाही",
+      "deleteConfirm1": "तुम्हाला हे हटवायचे आहे याची खात्री आहे का?",
+      "deleteConfirm2": "ही कृती पूर्ववत करता येणार नाही.",
+      "cancel": "रद्द करा",
+      "tryAgain": "पुन्हा प्रयत्न करा",
+      "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवले गेले आहे."
     }
   },
+  "common": {
+    "submit": "सबमिट करा",
+    "update": "अद्ययावत करा",
+    "edit": "संपादित करा",
+    "delete": "हटवा",
+    "cancel": "रद्द करा"
+  },
+  "sidebar": {
+  "master": {
+    "master": "मास्टर",
+    "partyMaster": "पार्टी मास्टर",
+    "vehicleMaster": "वाहन मास्टर",
+    "cityMaster": "शहर मास्टर",
+    "driverMaster": "ड्रायव्हर मास्टर",
+    "productMaster": "प्रॉडक्ट मास्टर"
+  },
 
-   "memoEntry": {
-    "title": "मेमो एन्ट्री",
+  "transactions": {
+    "transactions": "व्यवहार",
+    "builty": "बिल्टी",
+    "memo": "मेमो नोंद"
+  },
 
-    "memoNumber": "मेमो नंबर",
-    "lrNumber": "एल.आर. नंबर",
-    "date": "तारीख",
-    "driverName": "ड्रायव्हरचे नाव",
+  "reports": {
+    "reports": "अहवाल"
+  },
 
-    "memoNumberPlaceholder": "मेमो नंबर प्रविष्ट करा",
-    "lrNumberPlaceholder": "एल.आर. नंबर प्रविष्ट करा",
-    "driverNamePlaceholder": "ड्रायव्हरचे नाव प्रविष्ट करा",
+  "settings": {
+    "settings": "सेटिंग्ज"
+  },
 
-    "table": {
-      "branch": "ब्रँच",
-      "series": "सिरीज",
-      "lrNo": "एल.आर. नंबर",
-      "consignor": "माल पाठविणारा",
-      "consignee": "माल घेणारा",
-      "place": "गाव"
-    },
+  "shortcuts": {
+    "shortcuts": "शॉर्टकट"
+  },
 
-    "common": {
-      "new": "नवीन",
-      "update": "सुधारित करा",
-      "delete": "हटवा",
-      "print": "छपाई",
-      "close": "बंद"
-    },
-
-    "validation": {
-      "memoNumberRequired": "मेमो नंबर आवश्यक आहे",
-      "lrNumberRequired": "एल.आर. नंबर आवश्यक आहे",
-      "driverNameRequired": "ड्रायव्हरचे नाव आवश्यक आहे"
-    }
+  "help": {
+    "help": "मदत"
   }
-
 }
-
+}

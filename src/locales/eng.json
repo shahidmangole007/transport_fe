@@ -20,141 +20,123 @@
       "partyAddressMin": "Party Address must be at least 4 characters"
     }
   },
-
-  
   "cityMaster": {
-    "title": "City Master",
-    "description": "Enter city code and city name.",
+    "insert": {
+      "title": "Add City Info",
+      "description": "Add a city to city master.",
+      "savePlaceHolher": "Enter city name",
+      "successAlertTitle" : "City saved successfully",
+      "successAlertDescription" : " Your city information has been saved. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to saved"
+    },
+    "edit": {
+      "title": "Edit City Info",
+      "description": "Update your city information.",
+      "cityCodeFeild" : "City Code",
+      "cityNameFeild" : "City Name",
+      "cityNameFeildPlaceHolder" : "Enter city name",
+      "successAlertTitle" : "City Info updated successfully",
+      "successAlertDescription" : " Your city information has been updated. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to update"
 
-    "cityCode": "City Code",
-    "cityName": "City Name",
-
-    "cityCodePlaceholder": "City Code",
-    "cityNamePlaceholder": "City Name",
-
-    "common": {
-      "save": "Save",
-      "update": "Update",
-      "delete": "Delete",
-      "searchCity": "Search City..."
     },
 
     "validation": {
-      "cityCodeRequired": "City Code is required",
-      "cityNameMin": "City Name must be at least 4 characters"
+  "cityNameRequired": "City Name is required",
+  "cityNameMinlength": "City Name must be at least 2 characters"
+},
+    "common":{
+      "search" : "Search City Info",
+      "alertTitle" : "Delete City Info?",
+      "successDeleteTitle" :"City Info Deleted Successfully",
+      "ok" :"OK",
+      "failureDeleteTitle" :"Failed to delete City Info ",
+      "deleteConfirm1" : "Are you sure you want to delete",
+      "deleteConfirm2" : "This action cannot be undone.",
+      "cancel" :"Cancel",
+      "tryAgain" :"Try Again",
+      "hasBeenDeletedSuccessfully": "has been deleted successfully."
     }
   },
-
-
-  "driverMaster": {
-    "title": "Driver Master",
-    "description": "Enter driver's code and name.",
-
-    "driverCode": "Driver Code",
-    "driverName": "Driver Name",
-
-    "driverCodePlaceholder": "Driver Code",
-    "driverNamePlaceholder": "Driver Name",
-
-    "common": {
-      "save": "Save",
-      "update": "Update",
-      "delete": "Delete",
-      "searchDriver": "Search Driver..."
+    "vehicleMaster": {
+    "insert": {
+      "title": "Add Vehicle Info",
+      "description": "Add a vehicle info to vehicle master.",
+      "vehicleNumberFeild" : "Vehicle Number",
+      "vehicleOwnerFeild" : "Vehicle Owner Name",
+      "vehicleNumberPlaceHolder": "Enter vehicle number",
+      "vehicleOwnerPlaceHolder": "Enter vehicle owner name",
+      "successAlertTitle" : "Vehicle Info saved successfully",
+      "successAlertDescription" : " Your vehicle information has been saved. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to saved."
     },
+    "edit": {
+      "title": "Edit Vehicle Info",
+      "description": "Edit a vehicle info to vehicle master.",
+      "vehicleCodeFeild" : "Vehicle Code",
+      "vehicleNumberFeild" : "Vehicle Number",
+      "vehicleOwnerFeild" : "Vehicle Owner Name",
+      "vehicleNumberPlaceHolder": "Enter vehicle number",
+      "vehicleOwnerPlaceHolder": "Enter vehicle owner name",
+      "successAlertTitle" : "Vehicle Info updated successfully",
+      "successAlertDescription" : " Your vehicle information has been updated. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to updated."
+    } ,
+    "validation":{
+      "vehicleNameRequired" : "Vehicle Number is required",
+      "vehicleNameMinlength" : "Vehicle Number must be at least 4 characters",
+      "vehicleOwnerNameRequired" : "Ownername is required",
+      "vehicleOwnerNameMinlength" : "Ownername  must be at least 4 characters"
+    },
+    "common":{
+      "search" : "Search Vehicle Info",
+      "alertTitle" : "Delete Vehicle Info?",
+      "successDeleteTitle" :"Vehicle Info Deleted Successfully",
+      "ok" :"OK",
+      "failureDeleteTitle" :"Failed to delete Vehicle Info ",
+      "deleteConfirm1" : "Are you sure you want to delete",
+      "deleteConfirm2" : "This action cannot be undone.",
 
-    "validation": {
-      "driverCodeRequired": "Driver Code is required",
-      "driverNameMin": "Driver Name must be at least 4 characters"
+      "cancel" :"Cancel",
+      "tryAgain" :"Try Again",
+      "hasBeenDeletedSuccessfully": "has been deleted successfully."
     }
   },
-
-  "productDetailsMaster": {
-    "title": "Product Details Master",
-    "description": "Enter product details.",
-
-    "itemCode": "Item Code",
-    "itemName": "Item Name",
-
-    "itemCodePlaceholder": "Item Code",
-    "itemNamePlaceholder": "Item Name",
-
-    "common": {
-      "save": "Save",
-      "update": "Update",
-      "delete": "Delete",
-      "searchProduct": "Search Product..."
-    },
-
-    "validation": {
-      "itemCodeRequired": "Item Code is required",
-      "itemNameMin": "Item Name must be at least 4 characters"
-    }
+  "common": {
+    "submit": "Submit",
+    "update": "Update",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel"
   },
-
-  "vehicleMaster": {
-    "title": "Vehicle Master",
-    "description": "Enter vehicle's code, number and owner name.",
-
-    "vehicleCode": "Vehicle Code",
-    "vehicleNumber": "Vehicle Register Number",
-    "vehicleOwner": "Owner Name of Vehicle",
-
-    "vehicleCodePlaceholder": "Vehicle Code",
-    "vehicleNumberPlaceholder": "Vehicle Register Number",
-    "vehicleOwnerPlaceholder": "Owner Name",
-
-    "common": {
-      "save": "Save",
-      "update": "Update",
-      "delete": "Delete",
-      "searchVehicle": "Search Vehicle..."
+  "sidebar" :{
+    "master": {
+      "master": "Master",
+      "partyMaster" : "Party Master",
+      "vehicleMaster" : "Vehicle Master",
+      "cityMaster" : "City Master",
+      "driverMaster" : "Driver Master",
+      "productMaster" : "Product Master"
     },
-
-    "validation": {
-      "vehicleCodeRequired": "Vehicle Code is required",
-      "vehicleNumberMin": "Vehicle Register Number must be at least 4 characters",
-      "vehicleOwnerMin": "Vehicle Owner Name must be at least 4 characters"
-    }
-  },
-
-  "memoEntry": {
-    "title": "Memo Entry",
-
-    "memoNumber": "Memo Number",
-    "lrNumber": "LR Number",
-    "date": "Date",
-    "driverName": "Driver Name",
-
-    "memoNumberPlaceholder": "Enter Memo Number",
-    "lrNumberPlaceholder": "Enter LR Number",
-    "driverNamePlaceholder": "Enter Driver Name",
-
-    "table": {
-      "branch": "Branch",
-      "series": "Series",
-      "lrNo": "LR Number",
-      "consignor": "Consignor",
-      "consignee": "Consignee",
-      "place": "Place"
+    "transactions":{
+      "transactions" :"Transactions",
+      "builty" : "Builty",
+      "memo":  "Memo Entry"
     },
-
-    "common": {
-      "new": "New",
-      "update": "Update",
-      "delete": "Delete",
-      "print": "Print",
-      "close": "Close"
+    "reports":{
+      "reports" : "Reports"
     },
-
-    "validation": {
-      "memoNumberRequired": "Memo Number is required",
-      "lrNumberRequired": "LR Number is required",
-      "driverNameRequired": "Driver Name is required"
+    "settings" :{
+      "settings": "Settings"
+    },
+    "shortcuts" :{
+        "shortcuts" : "Shortcuts"
+    },
+    "help" :{
+      "help" : "Help"
     }
   }
 }
 
 
-  
 

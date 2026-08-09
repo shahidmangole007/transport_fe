@@ -13,9 +13,29 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, TerminalSquareIcon, BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon, Truck } from "lucide-react"
+import {  
+  TerminalSquareIcon, 
+  BotIcon, 
+  BookOpenIcon, 
+  Settings2Icon,  
+  Truck,
+  FolderRootIcon,
+  BanknoteArrowUp,
+  FileTextIcon,
+  Settings,
+  SquareSlash,
+  BadgeInfoIcon
+} from "lucide-react"
+import { useTranslation } from "react-i18next"
 
-// This is sample data.
+
+
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { t } = useTranslation();
+
+
+  // This is sample data.
 const data = {
   user: {
     name: "shadcn",
@@ -33,59 +53,59 @@ const data = {
   ],
   navMain: [
     {
-      title: "Master",
+      title: t("sidebar.master.master"),
       url: "#",
       icon: (
-        <TerminalSquareIcon
+        <FolderRootIcon
         />
       ),
       isActive: true,
       items: [
         {
-          title: "Party Master",
+          title: t("sidebar.master.partyMaster"),
           url: "/dashboard/partymaster",
         },
         {
-          title: "Vehicle Master",
+          title: t("sidebar.master.vehicleMaster"),
           url: "/dashboard/vehiclemaster",
         },
         {
-          title: "City Master",
+          title: t("sidebar.master.cityMaster"),
           url: "/dashboard/citymaster",
         },
         {
-          title: "Driver Master",
+          title: t("sidebar.master.driverMaster"),
           url: "/dashboard/drivermaster",
         },
         {
-          title: "Product Details Master",
+          title: t("sidebar.master.productMaster"),
           url: "/dashboard/productdetailsmaster",
         },
       ],
     },
     {
-      title: "Transactions",
+      title: t("sidebar.transactions.transactions"),
       url: "#",
       icon: (
-        <TerminalSquareIcon
+        <BanknoteArrowUp
         />
       ),
       items: [
         {
-          title: "Lorry Receipt",
-          url: "/dashboard/lorryreceipt",
+          title: t("sidebar.transactions.builty"),
+          url: "#",
         },
         {
-          title: "Memo Entry",
-          url: "/dashboard/memoentry",
-        },
+          title:  t("sidebar.transactions.memo"),
+          url: "#",
+        }
       ],
     },
     {
-      title: "Reports",
+      title: t("sidebar.reports.reports"),
       url: "#",
       icon: (
-        <BookOpenIcon
+        <FileTextIcon
         />
       ),
       items: [
@@ -108,10 +128,62 @@ const data = {
       ],
     },
     {
-      title: "Settings",
+      title:  t("sidebar.settings.settings"),
       url: "#",
       icon: (
-        <Settings2Icon
+        <Settings
+        />
+      ),
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title:  t("sidebar.shortcuts.shortcuts"),
+      url: "#",
+      icon: (
+        <SquareSlash
+        />
+      ),
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title:  t("sidebar.help.help"),
+      url: "#",
+      icon: (
+        <BadgeInfoIcon
         />
       ),
       items: [
@@ -134,45 +206,18 @@ const data = {
       ],
     },
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: (
-        <FrameIcon
-        />
-      ),
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: (
-        <PieChartIcon
-        />
-      ),
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: (
-        <MapIcon
-        />
-      ),
-    },
-  ],
+ 
 }
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
+    <Sidebar  collapsible="icon" {...props}>
+      <SidebarHeader  >
         <TeamSwitcher teams={data.name} />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent  >
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter  >
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />

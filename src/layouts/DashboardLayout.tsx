@@ -87,9 +87,9 @@ export default function DashboardLayout() {
               </div>
             </div>
           </header>
-          {/* <div className="flex flex-1 flex-col gap-4 p-4 bg-fuchsia-900"> */}
-          <div className="flex flex-1 flex-col  bg-muted/80">
-            <div className=" h-full gap-4  p-4">
+          <div className="flex flex-1 flex-col  ">
+          {/* <div className="flex flex-1 flex-col  bg-muted/80"> */}
+            <div className="   h-full gap-8  p-8">
               <Outlet />
             </div>
 
