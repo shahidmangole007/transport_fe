@@ -115,6 +115,42 @@
       "vehicleNumberMin": "वाहन नोंदणी क्रमांक किमान ४ अक्षरांचा असावा",
       "vehicleOwnerMin": "वाहन मालकाचे नाव किमान ४ अक्षरांचे असावे"
     }
+  },
+
+   "memoEntry": {
+    "title": "मेमो एन्ट्री",
+
+    "memoNumber": "मेमो नंबर",
+    "lrNumber": "एल.आर. नंबर",
+    "date": "तारीख",
+    "driverName": "ड्रायव्हरचे नाव",
+
+    "memoNumberPlaceholder": "मेमो नंबर प्रविष्ट करा",
+    "lrNumberPlaceholder": "एल.आर. नंबर प्रविष्ट करा",
+    "driverNamePlaceholder": "ड्रायव्हरचे नाव प्रविष्ट करा",
+
+    "table": {
+      "branch": "ब्रँच",
+      "series": "सिरीज",
+      "lrNo": "एल.आर. नंबर",
+      "consignor": "माल पाठविणारा",
+      "consignee": "माल घेणारा",
+      "place": "गाव"
+    },
+
+    "common": {
+      "new": "नवीन",
+      "update": "सुधारित करा",
+      "delete": "हटवा",
+      "print": "छपाई",
+      "close": "बंद"
+    },
+
+    "validation": {
+      "memoNumberRequired": "मेमो नंबर आवश्यक आहे",
+      "lrNumberRequired": "एल.आर. नंबर आवश्यक आहे",
+      "driverNameRequired": "ड्रायव्हरचे नाव आवश्यक आहे"
+    }
   }
 
 }

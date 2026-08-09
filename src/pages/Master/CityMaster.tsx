@@ -16,9 +16,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import data from "../../data/data.json";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PaginationButtons } from "@/components/PaginationButtons";
 import { useEffect, useRef, useState } from "react";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,8 +27,14 @@ import { useForm } from "react-hook-form";
 import { FieldGroup } from "@/components/ui/field";
 import { TableWithFooter } from "@/components/TableWithFooter";
 import { Searchbar } from "@/components/Searchbar";
-import { useTranslation } from "react-i18next";
 
+const cityMasterSchema = z.object({
+  cityCode: z.string().min(1, "City Code  is required"),
+  cityName: z.string().min(4, "City Name is required"),
+  
+});
+
+type cityMasterFormData = z.infer<typeof cityMasterSchema>;
 
 export default function CityMaster() {
   const { t } = useTranslation();
@@ -64,41 +71,39 @@ export default function CityMaster() {
   };
 
   const [search, setSearch] = useState("");
-  const [cities, setCities] = useState<any[]>([]);
-  const [parties, setParties] = useState<any[]>([]);
+  const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(async () => {
+    const fetchCities = async () => {
       setLoading(true);
 
       try {
-        // const res : any = { "data" : [{}]} /* await partyService.search(search);*/
-        const res = {
-          data: [
-            {
-              cityCode: "P001",
-              cityName: "ABC Traders",
-            },
-          ],
-        };
+        const data = await getCities();
 
-        setCities(res.data);
-        setCities(res.data);
+        console.log("API Response:", data);
+
+        setCities(data);
+      } catch (error) {
+        console.error("Failed to fetch cities:", error);
       } finally {
         setLoading(false);
       }
-    }, 300);
+    };
 
-    return () => clearTimeout(timer);
-  }, [search]);
+    fetchCities();
+  }, []);
+
+  useEffect(() => {
+    console.log("Cities State Updated:", cities);
+  }, [cities]);
 
   return (
     <div className="grid h-[100%] gap-4 md:grid-cols-[40%_59%]">
       <div className="rounded-xl  justify-center ">
         <Card className="  ">
           <CardHeader>
-            <CardTitle>{t("cityMaster.title")}</CardTitle>
+            <CardTitle>City Master</CardTitle>
             <CardDescription>
               Enter city's code and name.
             </CardDescription>
@@ -119,13 +124,11 @@ export default function CityMaster() {
               <FieldGroup>
                 <div className="flex flex-col gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="code">
-                      {t("cityMaster.cityCode")}
-                    </Label>
+                    <Label htmlFor="code">City Code</Label>
                     <Input
                       id="code"
                       type="number"
-                      placeholder={t("cityMaster.cityCodePlaceholder")}
+                      placeholder="city code"
                       required
                       {...register("cityCode")}
                     />
@@ -136,13 +139,11 @@ export default function CityMaster() {
                     </p>
                   )}
                   <div className="grid gap-2">
-                    <Label htmlFor="name">
-                      {t("cityMaster.cityName")}
-                    </Label>
+                    <Label htmlFor="name">City Name</Label>
                     <Input
                       id="name"
                       type="text"
-                      placeholder={t("cityMaster.cityNamePlaceholder")}
+                      placeholder="city name"
                       required
                       {...register("cityName")}
                     />
@@ -194,7 +195,8 @@ export default function CityMaster() {
             </div>
           </CardHeader>
 
-          <TableWithFooter />
+          {/* <TableWithFooter /> */}
+          <DataTable data={data} />
         </Card>
       )}
     </div>

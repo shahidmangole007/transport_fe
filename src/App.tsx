@@ -1,5 +1,5 @@
 import DashboardLayout from "./layouts/DashboardLayout";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import { Toaster } from "./components/ui/sonner";
 import { useEffect, useState } from "react";
@@ -9,13 +9,21 @@ import VehicleMaster from "./pages/Master/VehicleMaster";
 import CityMaster from "./pages/Master/CityMaster";
 import DriverMaster from "./pages/Master/DriverMaster";
 import ProductDetailsMaster from "./pages/Master/ProductDetailsMaster";
+import Login2 from "./pages/Login2";
+import DemoMaster from "./pages/Master/DemoMaster";
+import LorryReceipt from "./pages/Transaction/LorryReceipt";
+import MemoEntry from "./pages/Transaction/MemoEntry";
 
 export default function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
+      <Routes >
+
+        <Route path="/" element={<Navigate to="/login2" replace />} />
+
+        <Route  path="/login" element={<Login />} />
+        <Route  path="/login2" element={<Login2 />} />
         <Route
           path="/dashboard"
           element={
@@ -28,6 +36,9 @@ export default function App() {
           <Route path="citymaster" element={<CityMaster />} />
           <Route path="drivermaster" element={<DriverMaster />} />
           <Route path="productdetailsmaster" element={<ProductDetailsMaster />} />
+          <Route path="demomaster" element={<DemoMaster />} />
+          <Route path="lorryreceipt" element={<LorryReceipt />} />
+          <Route path="memoentry" element={<MemoEntry />} />
         </Route>
       </Routes>
       <Toaster />

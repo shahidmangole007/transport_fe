@@ -116,8 +116,45 @@
       "vehicleNumberMin": "Vehicle Register Number must be at least 4 characters",
       "vehicleOwnerMin": "Vehicle Owner Name must be at least 4 characters"
     }
-  }
+  },
 
+  "memoEntry": {
+    "title": "Memo Entry",
+
+    "memoNumber": "Memo Number",
+    "lrNumber": "LR Number",
+    "date": "Date",
+    "driverName": "Driver Name",
+
+    "memoNumberPlaceholder": "Enter Memo Number",
+    "lrNumberPlaceholder": "Enter LR Number",
+    "driverNamePlaceholder": "Enter Driver Name",
+
+    "table": {
+      "branch": "Branch",
+      "series": "Series",
+      "lrNo": "LR Number",
+      "consignor": "Consignor",
+      "consignee": "Consignee",
+      "place": "Place"
+    },
+
+    "common": {
+      "new": "New",
+      "update": "Update",
+      "delete": "Delete",
+      "print": "Print",
+      "close": "Close"
+    },
+
+    "validation": {
+      "memoNumberRequired": "Memo Number is required",
+      "lrNumberRequired": "LR Number is required",
+      "driverNameRequired": "Driver Name is required"
+    }
+  }
 }
+
+
   
 
