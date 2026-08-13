@@ -1,21 +1,39 @@
 {
   "partyMaster": {
-    "title": "पार्टी मास्टर",
-    "description": "पार्टीचा कोड, नाव आणि पत्ता प्रविष्ट करा.",
-    "partyCode": "पार्टी कोड",
-    "partyName": "पार्टीचे नाव",
-    "partyAddress": "पार्टीचा पत्ता",
-    "partyCodePlaceholder": "पार्टी कोड",
-    "partyNamePlaceholder": "पार्टीचे नाव",
-    "partyAddressPlaceholder": "पार्टीचा पत्ता",
+    "insert": {
+      "title": "पार्टी मास्टर",
+      "description": "पार्टीचा कोड, नाव आणि पत्ता प्रविष्ट करा.",
+      "partyCode": "पार्टी कोड",
+      "partyName": "पार्टीचे नाव",
+      "partyAddress": "पार्टीचा पत्ता",
+      "savePlaceHolher": "पार्टीचे नाव प्रविष्ट करा",
+      "saveAddressHolher": "पार्टीचा पत्ता प्रविष्ट करा",
+      "partyCodePlaceholder": "पार्टी कोड",
+      "partyNamePlaceholder": "पार्टीचे नाव",
+      "partyAddressPlaceholder": "पार्टीचा पत्ता"
+    },
+
     "common": {
       "save": "जतन करा",
       "update": "सुधारित करा",
       "delete": "हटवा",
       "searchParty": "पार्टी शोधा..."
     },
+
+    "edit": {
+      "title": "पार्टी माहिती संपादित करा",
+      "description": "पार्टीची माहिती अद्ययावत करा.",
+      "partyCodeFeild": "पार्टी कोड",
+      "partyNameFeild": "पार्टीचे नाव",
+      "partyNameFeildPlaceHolder": "पार्टीचे नाव प्रविष्ट करा",
+      "successAlertTitle": "पार्टीची माहिती यशस्वीरित्या अद्ययावत झाली",
+      "successAlertDescription": "तुमची पार्टीची माहिती अद्ययावत करण्यात आली आहे. बदल त्वरित लागू होतील.",
+      "failAlertTitle": "अद्ययावत करण्यात अयशस्वी"
+    },
+
     "validation": {
       "partyCodeRequired": "पार्टी कोड आवश्यक आहे",
+      "partyNameRequired": "पार्टीचे नाव आवश्यक आहे",
       "partyNameMin": "पार्टीचे नाव किमान ४ अक्षरांचे असावे",
       "partyAddressMin": "पार्टीचा पत्ता किमान ४ अक्षरांचा असावा"
     }
@@ -56,6 +74,167 @@
       "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवले गेले आहे."
     }
   },
+  "driverMaster": {
+  "insert": {
+    "title": "ड्रायव्हर माहिती जोडा",
+    "description": "ड्रायव्हर मास्टरमध्ये ड्रायव्हर जोडा.",
+    "savePlaceHolher": "ड्रायव्हरचे नाव प्रविष्ट करा",
+    "successAlertTitle": "ड्रायव्हर यशस्वीरित्या जतन झाला",
+    "successAlertDescription": "तुमची ड्रायव्हर माहिती जतन करण्यात आली आहे. बदल त्वरित लागू होतील.",
+    "failAlertTitle": "जतन करण्यात अयशस्वी"
+  },
+
+  "edit": {
+    "title": "ड्रायव्हर माहिती संपादित करा",
+    "description": "तुमची ड्रायव्हर माहिती अद्ययावत करा.",
+    "driverCodeFeild": "ड्रायव्हर कोड",
+    "driverNameFeild": "ड्रायव्हरचे नाव",
+    "driverNameFeildPlaceHolder": "ड्रायव्हरचे नाव प्रविष्ट करा",
+    "successAlertTitle": "ड्रायव्हरची माहिती यशस्वीरित्या अद्ययावत झाली",
+    "successAlertDescription": "तुमची ड्रायव्हर माहिती अद्ययावत करण्यात आली आहे. बदल त्वरित लागू होतील.",
+    "failAlertTitle": "अद्ययावत करण्यात अयशस्वी"
+  },
+
+  "validation": {
+    "driverNameRequired": "ड्रायव्हरचे नाव आवश्यक आहे",
+    "driverNameMinlength": "ड्रायव्हरचे नाव किमान २ अक्षरांचे असावे"
+  },
+
+  "common": {
+    "search": "ड्रायव्हरची माहिती शोधा",
+    "alertTitle": "ड्रायव्हरची माहिती हटवायची आहे का?",
+    "successDeleteTitle": "ड्रायव्हरची माहिती यशस्वीरित्या हटवली",
+    "ok": "ठीक आहे",
+    "failureDeleteTitle": "ड्रायव्हरची माहिती हटवण्यात अयशस्वी",
+    "deleteConfirm1": "तुम्हाला हे हटवायचे आहे का?",
+    "deleteConfirm2": "ही क्रिया पूर्ववत करता येणार नाही.",
+    "cancel": "रद्द करा",
+    "tryAgain": "पुन्हा प्रयत्न करा",
+    "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवण्यात आले आहे."
+  }
+},
+
+"productMaster": {
+  "insert": {
+    "title": "उत्पादनाची माहिती जोडा",
+    "description": "उत्पादन मास्टरमध्ये उत्पादनाची माहिती जोडा.",
+    "savePlaceHolher": "उत्पादनाचे नाव प्रविष्ट करा",
+    "successAlertTitle": "उत्पादनाची माहिती यशस्वीरित्या जतन झाली",
+    "successAlertDescription": "तुमची उत्पादनाची माहिती जतन करण्यात आली आहे. बदल त्वरित लागू होतील.",
+    "failAlertTitle": "जतन करण्यात अयशस्वी"
+  },
+
+  "edit": {
+    "title": "उत्पादनाची माहिती संपादित करा",
+    "description": "तुमची उत्पादनाची माहिती अद्ययावत करा.",
+    "itemCodeFeild": "उत्पादन कोड",
+    "itemNameFeild": "उत्पादनाचे नाव",
+    "itemNameFeildPlaceHolder": "उत्पादनाचे नाव प्रविष्ट करा",
+    "successAlertTitle": "उत्पादनाची माहिती यशस्वीरित्या अद्ययावत झाली",
+    "successAlertDescription": "तुमची उत्पादनाची माहिती अद्ययावत करण्यात आली आहे. बदल त्वरित लागू होतील.",
+    "failAlertTitle": "अद्ययावत करण्यात अयशस्वी"
+  },
+
+  "validation": {
+    "itemNameRequired": "उत्पादनाचे नाव आवश्यक आहे",
+    "itemNameMinlength": "उत्पादनाचे नाव किमान २ अक्षरांचे असावे"
+  },
+
+  "common": {
+    "search": "उत्पादनाची माहिती शोधा",
+    "alertTitle": "उत्पादनाची माहिती हटवायची आहे का?",
+    "successDeleteTitle": "उत्पादनाची माहिती यशस्वीरित्या हटवली",
+    "ok": "ठीक आहे",
+    "failureDeleteTitle": "उत्पादनाची माहिती हटवण्यात अयशस्वी",
+    "deleteConfirm1": "तुम्हाला हे हटवायचे आहे का?",
+    "deleteConfirm2": "ही क्रिया पूर्ववत करता येणार नाही.",
+    "cancel": "रद्द करा",
+    "tryAgain": "पुन्हा प्रयत्न करा",
+    "hasBeenDeletedSuccessfully": "यशस्वीरित्या हटवण्यात आले आहे."
+  }
+},
+
+"lorryReceipt": {
+  "title": "लॉरी पावती",
+  "description": "लॉरी पावतीची माहिती भरा.",
+
+  "lrDetails": "एलआर माहिती",
+  "recordNo": "रेकॉर्ड क्रमांक",
+  "date": "दिनांक",
+  "payMode": "पेमेंट प्रकार",
+  "toPay": "टू पे",
+  "paid": "पेड",
+  "billMode": "बिल प्रकार",
+  "cash": "रोख",
+  "credit": "उधार",
+
+  "partyDetails": "पार्टी माहिती",
+  "consignorName": "माल पाठवणाऱ्याचे नाव",
+  "consigneeName": "माल घेणाऱ्याचे नाव",
+  "address": "पत्ता",
+  "route": "मार्ग",
+  "fromCity": "कोठून",
+  "toCity": "कोठे",
+
+  "consignorPlaceholder": "माल पाठवणाऱ्याचे नाव टाका",
+  "consigneePlaceholder": "माल घेणाऱ्याचे नाव टाका",
+  "addressPlaceholder": "पत्ता टाका",
+  "fromCityPlaceholder": "शहराचे नाव टाका",
+  "toCityPlaceholder": "शहराचे नाव टाका",
+
+  "charges": "शुल्क माहिती",
+  "lrCount": "एलआर संख्या",
+  "weight": "वजन",
+  "freightRate": "वाहतूक दर",
+  "freightAmount": "वाहतूक रक्कम",
+  "estimatedGoodsAmount": "अंदाजे मालाची रक्कम",
+  "hamali": "हमाली",
+  "receiptCharge": "पावती शुल्क",
+  "depositAmount": "जमा रक्कम",
+  "cashFreight": "रोख वाहतूक रक्कम",
+
+  "itemDetails": "मालाची माहिती",
+  "srNo": "अ. क्र.",
+  "addRow": "ओळ जोडा",
+  "remarks": "शेरा",
+
+  "validation": {
+    "recordPrefixRequired": "रेकॉर्ड प्रीफिक्स आवश्यक आहे",
+    "recordSeriesRequired": "रेकॉर्ड सिरीज आवश्यक आहे",
+    "recordNoRequired": "रेकॉर्ड क्रमांक आवश्यक आहे",
+    "dateRequired": "दिनांक आवश्यक आहे",
+    "consignorNameRequired": "माल पाठवणाऱ्याचे नाव आवश्यक आहे",
+    "consigneeNameRequired": "माल घेणाऱ्याचे नाव आवश्यक आहे",
+    "fromCityRequired": "कोठून शहर आवश्यक आहे",
+    "toCityRequired": "कोठे शहर आवश्यक आहे"
+  },
+
+  "success": {
+    "saveTitle": "लॉरी पावती यशस्वीरित्या जतन झाली",
+    "saveDescription": "तुमची लॉरी पावती यशस्वीरित्या जतन झाली आहे.",
+    "updateTitle": "लॉरी पावती यशस्वीरित्या अपडेट झाली",
+    "updateDescription": "तुमची लॉरी पावती यशस्वीरित्या अपडेट झाली आहे.",
+    "deleteTitle": "लॉरी पावती यशस्वीरित्या हटवली",
+    "deleteDescription": "लॉरी पावती यशस्वीरित्या हटवली आहे."
+  },
+
+  "error": {
+    "saveFailed": "लॉरी पावती जतन करण्यात अयशस्वी",
+    "updateFailed": "लॉरी पावती अपडेट करण्यात अयशस्वी",
+    "deleteFailed": "लॉरी पावती हटवण्यात अयशस्वी"
+  },
+
+  "common": {
+    "search": "लॉरी पावती शोधा",
+    "deleteConfirmTitle": "लॉरी पावती हटवायची आहे?",
+    "deleteConfirm1": "तुम्हाला ही लॉरी पावती हटवायची आहे का?",
+    "deleteConfirm2": "ही क्रिया पूर्ववत करता येणार नाही.",
+    "cancel": "रद्द करा",
+    "tryAgain": "पुन्हा प्रयत्न करा",
+    "ok": "ठीक आहे"
+  }
+},
+
   "vehicleMaster": {
     "insert": {
       "title": "वाहनाची माहिती जोडा",

@@ -1,21 +1,37 @@
 {
   "partyMaster": {
+    "insert": {
     "title": "Party Master",
     "description": "Enter party's code, name and address.",
     "partyCode": "Party Code",
     "partyName": "Party Name",
     "partyAddress": "Party Address",
+    "savePlaceHolher": "Enter party name",
+    "saveAddressHolher": "Enter party address",
     "partyCodePlaceholder": "Party code",
     "partyNamePlaceholder": "Party name",
-    "partyAddressPlaceholder": "Party address",
+    "partyAddressPlaceholder": "Party address"},
     "common": {
       "save": "Save",
       "update": "Update",
       "delete": "Delete",
       "searchParty": "Search Party..."
     },
+    "edit": {
+      "title": "Edit Party Info",
+      "description": "Update your party information.",
+      "partyCodeFeild" : "Party Code",
+      "partyNameFeild" : "Party Name",
+      "partyNameFeildPlaceHolder" : "Enter party name",
+      "successAlertTitle" : "Party Info updated successfully",
+      "successAlertDescription" : " Your party information has been updated. Changes will be reflected immediately.",
+       "failAlertTitle" : "Failed to update"
+
+    },
+
     "validation": {
       "partyCodeRequired": "Party Code is required",
+      "partyNameRequired": "Party Name is required",
       "partyNameMin": "Party Name must be at least 4 characters",
       "partyAddressMin": "Party Address must be at least 4 characters"
     }
@@ -58,6 +74,84 @@
       "hasBeenDeletedSuccessfully": "has been deleted successfully."
     }
   },
+  "driverMaster": {
+  "insert": {
+    "title": "Add Driver Info",
+    "description": "Add a driver to driver master.",
+    "savePlaceHolher": "Enter driver name",
+    "successAlertTitle": "Driver saved successfully",
+    "successAlertDescription": "Your driver information has been saved. Changes will be reflected immediately.",
+    "failAlertTitle": "Failed to save"
+  },
+
+  "edit": {
+    "title": "Edit Driver Info",
+    "description": "Update your driver information.",
+    "driverCodeFeild": "Driver Code",
+    "driverNameFeild": "Driver Name",
+    "driverNameFeildPlaceHolder": "Enter driver name",
+    "successAlertTitle": "Driver Info updated successfully",
+    "successAlertDescription": "Your driver information has been updated. Changes will be reflected immediately.",
+    "failAlertTitle": "Failed to update"
+  },
+
+  "validation": {
+    "driverNameRequired": "Driver Name is required",
+    "driverNameMinlength": "Driver Name must be at least 2 characters"
+  },
+
+  "common": {
+    "search": "Search Driver Info",
+    "alertTitle": "Delete Driver Info?",
+    "successDeleteTitle": "Driver Info Deleted Successfully",
+    "ok": "OK",
+    "failureDeleteTitle": "Failed to delete Driver Info",
+    "deleteConfirm1": "Are you sure you want to delete",
+    "deleteConfirm2": "This action cannot be undone.",
+    "cancel": "Cancel",
+    "tryAgain": "Try Again",
+    "hasBeenDeletedSuccessfully": "has been deleted successfully."
+  }
+},
+"productMaster": {
+  "insert": {
+    "title": "Add Product Details",
+    "description": "Add product details to product details master.",
+    "savePlaceHolher": "Enter item name",
+    "successAlertTitle": "Product details saved successfully",
+    "successAlertDescription": "Your product details have been saved. Changes will be reflected immediately.",
+    "failAlertTitle": "Failed to save"
+  },
+
+  "edit": {
+    "title": "Edit Product Details",
+    "description": "Update your product details.",
+    "itemCodeFeild": "Item Code",
+    "itemNameFeild": "Item Name",
+    "itemNameFeildPlaceHolder": "Enter item name",
+    "successAlertTitle": "Product Details updated successfully",
+    "successAlertDescription": "Your product details have been updated. Changes will be reflected immediately.",
+    "failAlertTitle": "Failed to update"
+  },
+
+  "validation": {
+    "itemNameRequired": "Item Name is required",
+    "itemNameMinlength": "Item Name must be at least 2 characters"
+  },
+
+  "common": {
+    "search": "Search Product Details",
+    "alertTitle": "Delete Product Details?",
+    "successDeleteTitle": "Product Details Deleted Successfully",
+    "ok": "OK",
+    "failureDeleteTitle": "Failed to delete Product Details",
+    "deleteConfirm1": "Are you sure you want to delete",
+    "deleteConfirm2": "This action cannot be undone.",
+    "cancel": "Cancel",
+    "tryAgain": "Try Again",
+    "hasBeenDeletedSuccessfully": "has been deleted successfully."
+  }
+},
     "vehicleMaster": {
     "insert": {
       "title": "Add Vehicle Info",
@@ -135,6 +229,98 @@
     "help" :{
       "help" : "Help"
     }
+  },
+
+   "lorryReceipt": {
+  "title": "Lorry Receipt",
+  "description": "Enter lorry receipt details.",
+
+  "lrDetails": "LR Details",
+  "recordNo": "Record No",
+  "date": "Date",
+  "payMode": "Pay Mode",
+  "toPay": "To Pay",
+  "paid": "Paid",
+  "billMode": "Bill Mode",
+  "cash": "Cash",
+  "credit": "Credit",
+
+  "partyDetails": "Party Details",
+  "consignorName": "Consignor Name",
+  "consigneeName": "Consignee Name",
+  "address": "Address",
+  "route": "Route",
+  "fromCity": "From City",
+  "toCity": "To City",
+
+  "consignorPlaceholder": "Enter consignor name",
+  "consigneePlaceholder": "Enter consignee name",
+  "addressPlaceholder": "Enter address",
+  "fromCityPlaceholder": "From city",
+  "toCityPlaceholder": "To city",
+
+  "charges": "Charges",
+  "lrCount": "LR Count",
+  "weight": "Weight",
+  "freightRate": "Freight Rate",
+  "freightAmount": "Freight Amount",
+  "estimatedGoodsAmount": "Estimated Goods Amount",
+  "hamali": "Hamali",
+  "receiptCharge": "Receipt Charge",
+  "depositAmount": "Deposit Amount",
+  "cashFreight": "Cash Freight",
+
+  "itemDetails": "Item Details",
+  "srNo": "Sr. No.",
+  "addRow": "Add Row",
+  "remarks": "Remarks",
+
+  "validation": {
+    "recordPrefixRequired": "Record prefix is required",
+    "recordSeriesRequired": "Record series is required",
+    "recordNoRequired": "Record number is required",
+    "dateRequired": "Date is required",
+    "consignorNameRequired": "Consignor name is required",
+    "consigneeNameRequired": "Consignee name is required",
+    "fromCityRequired": "From city is required",
+    "toCityRequired": "To city is required"
+  },
+
+  "success": {
+    "saveTitle": "Lorry Receipt saved successfully",
+    "saveDescription": "Your lorry receipt has been saved successfully.",
+    "updateTitle": "Lorry Receipt updated successfully",
+    "updateDescription": "Your lorry receipt has been updated successfully.",
+    "deleteTitle": "Lorry Receipt deleted successfully",
+    "deleteDescription": "The lorry receipt has been deleted successfully."
+  },
+
+  "error": {
+    "saveFailed": "Failed to save lorry receipt",
+    "updateFailed": "Failed to update lorry receipt",
+    "deleteFailed": "Failed to delete lorry receipt"
+  },
+
+  "common": {
+    "search": "Search Lorry Receipt",
+    "deleteConfirmTitle": "Delete Lorry Receipt?",
+    "deleteConfirm1": "Are you sure you want to delete",
+    "deleteConfirm2": "This action cannot be undone.",
+    "cancel": "Cancel",
+    "tryAgain": "Try Again",
+    "ok": "OK"
+  }
+},
+
+  "common": {
+    "new": "New",
+    "save": "Save",
+    "update": "Update",
+    "delete": "Delete",
+    "print": "Print",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "tryAgain": "Try Again"
   }
 }
 
