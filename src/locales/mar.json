@@ -155,8 +155,8 @@
 },
 
 "lorryReceipt": {
-  "title": "लॉरी पावती",
-  "description": "लॉरी पावतीची माहिती भरा.",
+  "title": "बिल्टी पावती",
+  "description": "बिल्टी पावतीची माहिती भरा.",
 
   "lrDetails": "एलआर माहिती",
   "recordNo": "रेकॉर्ड क्रमांक",
@@ -185,15 +185,17 @@
   "charges": "शुल्क माहिती",
   "lrCount": "एलआर संख्या",
   "weight": "वजन",
-  "freightRate": "वाहतूक दर",
-  "freightAmount": "वाहतूक रक्कम",
+  "freightRate": "भाडे",
+  "freightAmount": "ऐकूण भाडे",
   "estimatedGoodsAmount": "अंदाजे मालाची रक्कम",
   "hamali": "हमाली",
-  "receiptCharge": "पावती शुल्क",
+  "receiptCharge": "रिसिट चार्ज/पावती शुल्क",
   "depositAmount": "जमा रक्कम",
+  "crossCharges": "क्रॉसिंग शुल्क",
   "cashFreight": "रोख वाहतूक रक्कम",
 
   "itemDetails": "मालाची माहिती",
+  "dakNo": "ऐकूण डाक",
   "srNo": "अ. क्र.",
   "addRow": "ओळ जोडा",
   "remarks": "शेरा",

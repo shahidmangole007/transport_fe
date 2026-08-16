@@ -268,9 +268,11 @@
   "hamali": "Hamali",
   "receiptCharge": "Receipt Charge",
   "depositAmount": "Deposit Amount",
+  "crossCharges": "Crossing Charges",
   "cashFreight": "Cash Freight",
 
   "itemDetails": "Item Details",
+  "dakNo": "Dak",
   "srNo": "Sr. No.",
   "addRow": "Add Row",
   "remarks": "Remarks",
