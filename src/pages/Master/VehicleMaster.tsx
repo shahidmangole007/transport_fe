@@ -129,7 +129,7 @@ const vehicleMasterUpdateSchema = z.object({
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [submitLoading, setSubmitLoading] = useState(false);

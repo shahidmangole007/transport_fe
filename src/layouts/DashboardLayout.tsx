@@ -50,6 +50,7 @@ export default function DashboardLayout() {
     "/dashboard/citymaster": "City Master",
     "/dashboard/drivermaster": "Driver Master",
     "/dashboard/productdetailsmaster": "Product Details Master",
+    "/dashboard/lorryreceipt": "Lorry Receipt",
   };
 
   console.log(location.pathname);

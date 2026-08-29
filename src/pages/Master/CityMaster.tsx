@@ -115,7 +115,7 @@ export default function CityMaster() {
     },
   });
 
-  const infoRef = useRef<HTMLIFrameElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
   const [cities, setCities] = useState<City[]>([]);
   const [submitLoading, setSubmitLoading] = useState(false);
