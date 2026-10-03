@@ -18,26 +18,21 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-// import data from "../../data/data.json";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { DataTable } from "@/components/data-table";
-
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Spinner } from "@/components/ui/spinner";
@@ -45,7 +40,13 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Vehicle } from "@/types/vehicle";
-import { createVehicle, deleteVehicle, getVehicles, searchVehicle, updateVehicle } from "@/api/vehicle.api";
+import {
+  createVehicle,
+  deleteVehicle,
+  getVehicles,
+  searchVehicle,
+  updateVehicle,
+} from "@/api/vehicle.api";
 
 const columns: any = [
   {
@@ -66,41 +67,35 @@ const columns: any = [
   },
 ];
 
-
-
 export default function VehicleMaster() {
-
   const { t } = useTranslation();
-  
-type vehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
-type vehicleMasterUpdateFormData = z.infer<typeof vehicleMasterUpdateSchema>;
-
+  const location = useLocation();
 
   const vehicleMasterSchema = z.object({
-  vehicleName: z
-    .string()
-    .min(2, t("vehicleMaster.validation.vehicleNameRequired"))
-    .min(4, t("vehicleMaster.validation.vehicleNameMinlength")),
-  vehicleOwnerName: z
-    .string()
-    .min(2, t("vehicleMaster.validation.vehicleOwnerNameRequired"))
-    .min(4, t("vehicleMaster.validation.vehicleOwnerNameMinlength")),
-});
+    vehicleName: z
+      .string()
+      .min(2, t("vehicleMaster.validation.vehicleNameRequired"))
+      .min(4, t("vehicleMaster.validation.vehicleNameMinlength")),
+    vehicleOwnerName: z
+      .string()
+      .min(2, t("vehicleMaster.validation.vehicleOwnerNameRequired"))
+      .min(4, t("vehicleMaster.validation.vehicleOwnerNameMinlength")),
+  });
 
-const vehicleMasterUpdateSchema = z.object({
-  vehicleCode: z
-    .number(),
-  vehicleName: z
-    .string()
-    .min(2, t("vehicleMaster.validation.vehicleNameRequired"))
-    .min(4, t("vehicleMaster.validation.vehicleNameMinlength")),
-  vehicleOwnerName: z
-    .string()
-    .min(2, t("vehicleMaster.validation.vehicleOwnerNameRequired"))
-    .min(4, t("vehicleMaster.validation.vehicleOwnerNameMinlength")),
-});
+  const vehicleMasterUpdateSchema = z.object({
+    vehicleCode: z.number(),
+    vehicleName: z
+      .string()
+      .min(2, t("vehicleMaster.validation.vehicleNameRequired"))
+      .min(4, t("vehicleMaster.validation.vehicleNameMinlength")),
+    vehicleOwnerName: z
+      .string()
+      .min(2, t("vehicleMaster.validation.vehicleOwnerNameRequired"))
+      .min(4, t("vehicleMaster.validation.vehicleOwnerNameMinlength")),
+  });
 
-  
+  type vehicleMasterFormData = z.infer<typeof vehicleMasterSchema>;
+  type vehicleMasterUpdateFormData = z.infer<typeof vehicleMasterUpdateSchema>;
 
   const {
     register: registerAdd,
@@ -123,13 +118,12 @@ const vehicleMasterUpdateSchema = z.object({
   } = useForm<vehicleMasterUpdateFormData>({
     resolver: zodResolver(vehicleMasterUpdateSchema),
     defaultValues: {
-      vehicleCode : 0,
+      vehicleCode: 0,
       vehicleName: "",
       vehicleOwnerName: "",
     },
   });
 
-  const infoRef = useRef<HTMLDivElement>(null);
   const [isShow, setIsShow] = useState(false);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -138,13 +132,16 @@ const vehicleMasterUpdateSchema = z.object({
   const [isEditing, setIsEditing] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [showAlert, setShowAlert] = useState(false);
-  const [showErrorAlert, setShowErrorAlert] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [vehicleToDelete, setVehicleToDelete] = useState<Vehicle | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [deleteStatus, setDeleteStatus] = useState<
     "confirm" | "success" | "error"
   >("confirm");
+
+  const toggleTable = () => {
+    setIsShow((prev) => !prev);
+  };
 
   const fetchVehicles = async () => {
     setLoading(true);
@@ -159,13 +156,12 @@ const vehicleMasterUpdateSchema = z.object({
 
   const searchVehicles = async (query: string) => {
     setLoading(true);
-    debugger;
+
     try {
       if (query.trim() === "") {
         const data = await getVehicles();
         setVehicles(data);
       } else {
-        debugger;
         const data = await searchVehicle(query);
         setVehicles(data);
       }
@@ -183,13 +179,15 @@ const vehicleMasterUpdateSchema = z.object({
       setSubmitLoading(true);
       setErrorMessage(null);
 
-      let submitObj = { name: data.vehicleName , ownerName : data.vehicleOwnerName  };
-      const response = await createVehicle(submitObj);
+      const submitObj = {
+        name: data.vehicleName,
+        ownerName: data.vehicleOwnerName,
+      };
+
+      await createVehicle(submitObj);
 
       setShowAlert(true);
-
       await fetchVehicles();
-
       resetAdd();
 
       setTimeout(() => {
@@ -207,6 +205,7 @@ const vehicleMasterUpdateSchema = z.object({
       }
     } finally {
       setSubmitLoading(false);
+
       setTimeout(() => {
         setErrorMessage(null);
       }, 3000);
@@ -218,14 +217,16 @@ const vehicleMasterUpdateSchema = z.object({
       setUpdateLoading(true);
       setErrorMessage(null);
 
-      const updateObj = { name : data.vehicleName , ownerName : data.vehicleOwnerName }
-      const response = await updateVehicle(data.vehicleCode, updateObj);
+      const updateObj = {
+        name: data.vehicleName,
+        ownerName: data.vehicleOwnerName,
+      };
+
+      await updateVehicle(data.vehicleCode, updateObj);
 
       setShowAlert(true);
-
       await fetchVehicles();
-
-      resetAdd();
+      resetUpdate();
 
       setTimeout(() => {
         setShowAlert(false);
@@ -242,6 +243,7 @@ const vehicleMasterUpdateSchema = z.object({
       }
     } finally {
       setUpdateLoading(false);
+
       setTimeout(() => {
         setErrorMessage(null);
       }, 3000);
@@ -249,26 +251,23 @@ const vehicleMasterUpdateSchema = z.object({
   };
 
   const handleEdit = (row: Vehicle) => {
-    console.log("Editing:", row);
-
     setSelectedVehicle(row);
     setIsEditing(true);
 
     resetUpdate({
       vehicleCode: row.code,
       vehicleName: row.name,
-      vehicleOwnerName : row.ownerName
+      vehicleOwnerName: row.ownerName,
     });
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-
     resetAdd();
     resetUpdate();
-
     setSelectedVehicle(null);
     setShowAlert(false);
+    setErrorMessage(null);
   };
 
   const handleDeleteClick = (row: Vehicle) => {
@@ -283,7 +282,6 @@ const vehicleMasterUpdateSchema = z.object({
       setErrorMessage(null);
 
       await deleteVehicle(data.code);
-
       await fetchVehicles();
 
       setDeleteStatus("success");
@@ -304,8 +302,7 @@ const vehicleMasterUpdateSchema = z.object({
     }
   };
 
-  const location = useLocation();
-
+  // F1 = same functionality as the Info button
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (
@@ -313,7 +310,6 @@ const vehicleMasterUpdateSchema = z.object({
         location.pathname === "/dashboard/vehiclemaster"
       ) {
         event.preventDefault();
-
         setIsShow((prev) => !prev);
       }
     };
@@ -326,59 +322,100 @@ const vehicleMasterUpdateSchema = z.object({
   }, [location.pathname]);
 
   return (
-    <div className="grid h-full gap-8  md:grid-cols-[max-content_1fr] ">
+    <div className="grid h-full gap-8 md:grid-cols-[max-content_1fr]">
       {isEditing ? (
         <form onSubmit={handleUpdateSubmit(onUpdate)}>
-          <Card className="max-w-full min-w-md  max-h-fit">
+          <Card className="max-w-full min-w-md max-h-fit">
             <CardHeader>
-              <CardTitle>{t("vehicleMaster.edit.title")}</CardTitle>
-              <CardDescription>
-                {t("vehicleMaster.edit.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("vehicleMaster.edit.title")}</CardTitle>
+                  <CardDescription>
+                    {t("vehicleMaster.edit.description")}
+                  </CardDescription>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
+
             <CardContent>
-              <Field data-invalid={updateErrors.vehicleCode ? true : undefined}>
+              <Field
+                data-invalid={
+                  updateErrors.vehicleCode ? true : undefined
+                }
+              >
                 <FieldLabel htmlFor="code">
                   {t("vehicleMaster.edit.vehicleCodeFeild")}
                 </FieldLabel>
+
                 <Input
                   id="code"
                   readOnly
                   type="number"
                   required
-                  {...registerUpdate("vehicleCode", { valueAsNumber: true })}
-                
+                  {...registerUpdate("vehicleCode", {
+                    valueAsNumber: true,
+                  })}
                 />
-               
               </Field>
 
-              <Field data-invalid={updateErrors.vehicleName ? true : undefined}>
-                <FieldLabel htmlFor="name">
+              <Field
+                data-invalid={
+                  updateErrors.vehicleName ? true : undefined
+                }
+              >
+                <FieldLabel htmlFor="edit-name">
                   {t("vehicleMaster.edit.vehicleNumberFeild")}
                 </FieldLabel>
+
                 <Input
-                  id="name"
-                  placeholder={t("vehicleMaster.edit.vehicleNumberPlaceHolder")}
+                  id="edit-name"
+                  placeholder={t(
+                    "vehicleMaster.edit.vehicleNumberPlaceHolder",
+                  )}
                   required
                   {...registerUpdate("vehicleName")}
-                  aria-invalid={updateErrors.vehicleName ? true : undefined}
+                  aria-invalid={
+                    updateErrors.vehicleName ? true : undefined
+                  }
                 />
+
                 <FieldDescription>
                   {updateErrors.vehicleName?.message}
                 </FieldDescription>
               </Field>
 
-              <Field data-invalid={updateErrors.vehicleOwnerName ? true : undefined}>
-                <FieldLabel htmlFor="ownername">
+              <Field
+                data-invalid={
+                  updateErrors.vehicleOwnerName ? true : undefined
+                }
+              >
+                <FieldLabel htmlFor="edit-ownername">
                   {t("vehicleMaster.edit.vehicleOwnerFeild")}
                 </FieldLabel>
+
                 <Input
-                  id="ownername"
-                  placeholder={t("vehicleMaster.edit.vehicleOwnerPlaceHolder")}
+                  id="edit-ownername"
+                  placeholder={t(
+                    "vehicleMaster.edit.vehicleOwnerPlaceHolder",
+                  )}
                   required
                   {...registerUpdate("vehicleOwnerName")}
-                  aria-invalid={updateErrors.vehicleOwnerName ? true : undefined}
+                  aria-invalid={
+                    updateErrors.vehicleOwnerName ? true : undefined
+                  }
                 />
+
                 <FieldDescription>
                   {updateErrors.vehicleOwnerName?.message}
                 </FieldDescription>
@@ -395,7 +432,9 @@ const vehicleMasterUpdateSchema = z.object({
                 </Button>
 
                 <Button type="submit" className="flex-1">
-                  {updateLoading && <Spinner data-icon="inline-start" />}
+                  {updateLoading && (
+                    <Spinner data-icon="inline-start" />
+                  )}
                   {t("common.update")}
                 </Button>
               </div>
@@ -413,9 +452,14 @@ const vehicleMasterUpdateSchema = z.object({
               )}
 
               {errorMessage && (
-                <Alert variant={"destructive"} className="max-w-md mt-2 ">
+                <Alert
+                  variant="destructive"
+                  className="max-w-md mt-2"
+                >
                   <AlertCircleIcon />
-                  <AlertTitle>{t("vehicleMaster.edit.failAlertTitle")}</AlertTitle>
+                  <AlertTitle>
+                    {t("vehicleMaster.edit.failAlertTitle")}
+                  </AlertTitle>
                   <AlertDescription>{errorMessage}</AlertDescription>
                 </Alert>
               )}
@@ -426,42 +470,91 @@ const vehicleMasterUpdateSchema = z.object({
         <form onSubmit={handleAddSubmit(onSubmit)}>
           <Card className="max-w-sm min-w-sm w-full max-h-fit">
             <CardHeader>
-              <CardTitle>{t("vehicleMaster.insert.title")}</CardTitle>
-              <CardDescription>
-                {t("vehicleMaster.insert.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>
+                    {t("vehicleMaster.insert.title")}
+                  </CardTitle>
+
+                  <CardDescription>
+                    {t("vehicleMaster.insert.description")}
+                  </CardDescription>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
+
             <CardContent>
-              <Field data-invalid={addErrors.vehicleName ? true : undefined}>
-                <FieldLabel htmlFor="name">{t("vehicleMaster.insert.vehicleNumberFeild")}</FieldLabel>
+              <Field
+                data-invalid={
+                  addErrors.vehicleName ? true : undefined
+                }
+              >
+                <FieldLabel htmlFor="add-name">
+                  {t(
+                    "vehicleMaster.insert.vehicleNumberFeild",
+                  )}
+                </FieldLabel>
+
                 <Input
-                  id="name"
-                  placeholder={t("vehicleMaster.insert.vehicleNumberPlaceHolder")}
+                  id="add-name"
+                  placeholder={t(
+                    "vehicleMaster.insert.vehicleNumberPlaceHolder",
+                  )}
                   required
                   {...registerAdd("vehicleName")}
-                  aria-invalid={addErrors.vehicleName ? true : undefined}
+                  aria-invalid={
+                    addErrors.vehicleName ? true : undefined
+                  }
                 />
+
                 <FieldDescription>
                   {addErrors.vehicleName?.message}
                 </FieldDescription>
               </Field>
 
-              <Field data-invalid={addErrors.vehicleOwnerName ? true : undefined}>
-                <FieldLabel htmlFor="name">{t("vehicleMaster.insert.vehicleOwnerFeild")}</FieldLabel>
+              <Field
+                data-invalid={
+                  addErrors.vehicleOwnerName ? true : undefined
+                }
+              >
+                <FieldLabel htmlFor="add-ownername">
+                  {t(
+                    "vehicleMaster.insert.vehicleOwnerFeild",
+                  )}
+                </FieldLabel>
+
                 <Input
-                  id="name"
-                  placeholder={t("vehicleMaster.insert.vehicleOwnerPlaceHolder")}
+                  id="add-ownername"
+                  placeholder={t(
+                    "vehicleMaster.insert.vehicleOwnerPlaceHolder",
+                  )}
                   required
                   {...registerAdd("vehicleOwnerName")}
-                  aria-invalid={addErrors.vehicleOwnerName ? true : undefined}
+                  aria-invalid={
+                    addErrors.vehicleOwnerName ? true : undefined
+                  }
                 />
+
                 <FieldDescription>
                   {addErrors.vehicleOwnerName?.message}
                 </FieldDescription>
               </Field>
 
               <Button type="submit" className="w-full mt-4">
-                {submitLoading && <Spinner data-icon="inline-start" />}
+                {submitLoading && (
+                  <Spinner data-icon="inline-start" />
+                )}
                 {t("common.submit")}
               </Button>
 
@@ -472,18 +565,25 @@ const vehicleMasterUpdateSchema = z.object({
                     {t("vehicleMaster.insert.successAlertTitle")}
                   </AlertTitle>
                   <AlertDescription>
-                    {t("vehicleMaster.insert.successAlertDescription")}
+                    {t(
+                      "vehicleMaster.insert.successAlertDescription",
+                    )}
                   </AlertDescription>
                 </Alert>
               )}
 
               {errorMessage && (
-                <Alert variant={"destructive"} className="max-w-md mt-2 ">
+                <Alert
+                  variant="destructive"
+                  className="max-w-md mt-2"
+                >
                   <AlertCircleIcon />
                   <AlertTitle>
                     {t("vehicleMaster.insert.failAlertTitle")}
                   </AlertTitle>
-                  <AlertDescription>{errorMessage}</AlertDescription>
+                  <AlertDescription>
+                    {errorMessage}
+                  </AlertDescription>
                 </Alert>
               )}
             </CardContent>
@@ -491,7 +591,7 @@ const vehicleMasterUpdateSchema = z.object({
         </form>
       )}
 
-      {isShow && (
+      {!isShow && (
         <Card className="overflow-hidden min-w-0">
           <DataTable
             data={vehicles}
@@ -518,25 +618,32 @@ const vehicleMasterUpdateSchema = z.object({
         </Card>
       )}
 
-      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+      <AlertDialog
+        open={deleteDialogOpen}
+        onOpenChange={setDeleteDialogOpen}
+      >
         <AlertDialogContent>
           {deleteStatus === "confirm" && (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>{t("vehicleMaster.common.alertTitle")}</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {t("vehicleMaster.common.alertTitle")}
+                </AlertDialogTitle>
 
                 <AlertDialogDescription>
                   {t("vehicleMaster.common.deleteConfirm1")}{" "}
-                  <strong>{vehicleToDelete?.name} </strong> 
-                {t("vehicleMaster.common.deleteConfirm2")}
+                  <strong>{vehicleToDelete?.name}</strong>{" "}
+                  {t("vehicleMaster.common.deleteConfirm2")}
                 </AlertDialogDescription>
               </AlertDialogHeader>
 
               <AlertDialogFooter>
-                <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+                <AlertDialogCancel>
+                  {t("common.cancel")}
+                </AlertDialogCancel>
 
                 <AlertDialogAction
-                variant={"destructive"}
+                  variant="destructive"
                   onClick={() => {
                     if (vehicleToDelete) {
                       handleDelete(vehicleToDelete);
@@ -552,10 +659,15 @@ const vehicleMasterUpdateSchema = z.object({
           {deleteStatus === "success" && (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>{t("vehicleMaster.common.successDeleteTitle")}</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {t("vehicleMaster.common.successDeleteTitle")}
+                </AlertDialogTitle>
 
                 <AlertDialogDescription>
-                  {vehicleToDelete?.name} {t("vehicleMaster.common.hasBeenDeletedSuccessfully")}
+                  {vehicleToDelete?.name}{" "}
+                  {t(
+                    "vehicleMaster.common.hasBeenDeletedSuccessfully",
+                  )}
                 </AlertDialogDescription>
               </AlertDialogHeader>
 
@@ -575,9 +687,15 @@ const vehicleMasterUpdateSchema = z.object({
           {deleteStatus === "error" && (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>{t("vehicleMaster.common.failureDeleteTitle")}</AlertDialogTitle>
+                <AlertDialogTitle>
+                  {t(
+                    "vehicleMaster.common.failureDeleteTitle",
+                  )}
+                </AlertDialogTitle>
 
-                <AlertDialogDescription>{errorMessage}</AlertDialogDescription>
+                <AlertDialogDescription>
+                  {errorMessage}
+                </AlertDialogDescription>
               </AlertDialogHeader>
 
               <AlertDialogFooter>

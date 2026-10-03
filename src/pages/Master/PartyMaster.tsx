@@ -173,6 +173,10 @@ export default function PartyMaster() {
     }
   };
 
+  const toggleTable = () => {
+    setIsShow((prev) => !prev);
+  };
+
   useEffect(() => {
     fetchParties();
   }, []);
@@ -327,10 +331,25 @@ export default function PartyMaster() {
         <form onSubmit={handleUpdateSubmit(onUpdate)}>
           <Card className="max-w-full min-w-md  max-h-fit">
             <CardHeader>
-              <CardTitle>{t("partyMaster.edit.title")}</CardTitle>
-              <CardDescription>
-                {t("partyMaster.edit.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("partyMaster.edit.title")}</CardTitle>
+                  <CardDescription>
+                    {t("partyMaster.edit.description")}
+                  </CardDescription>
+                </div>
+                
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Field data-invalid={updateErrors.partyCode ? true : undefined}>
@@ -408,10 +427,24 @@ export default function PartyMaster() {
         <form onSubmit={handleAddSubmit(onSubmit)}>
           <Card className="max-w-sm min-w-sm w-full max-h-fit">
             <CardHeader>
-              <CardTitle>{t("partyMaster.insert.title")}</CardTitle>
-              <CardDescription>
-                {t("partyMaster.insert.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("partyMaster.insert.title")}</CardTitle>
+                  <CardDescription>
+                    {t("partyMaster.insert.description")}
+                  </CardDescription>
+                </div>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Field data-invalid={addErrors.partyName ? true : undefined}>
@@ -473,7 +506,7 @@ export default function PartyMaster() {
         </form>
       )}
 
-      {isShow && (
+      {!isShow && (
         <Card className="overflow-hidden min-w-0">
           <DataTable
             data={parties}

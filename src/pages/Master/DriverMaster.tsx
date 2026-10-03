@@ -162,6 +162,10 @@ export default function DriverMaster() {
     }
   };
 
+  const toggleTable = () => {
+    setIsShow((prev) => !prev);
+  };
+
   useEffect(() => {
     fetchDrivers();
   }, []);
@@ -299,7 +303,6 @@ export default function DriverMaster() {
         location.pathname === "/dashboard/drivermaster"
       ) {
         event.preventDefault();
-
         setIsShow((prev) => !prev);
       }
     };
@@ -317,10 +320,26 @@ export default function DriverMaster() {
         <form onSubmit={handleUpdateSubmit(onUpdate)}>
           <Card className="max-w-full min-w-md  max-h-fit">
             <CardHeader>
-              <CardTitle>{t("driverMaster.edit.title")}</CardTitle>
-              <CardDescription>
-                {t("driverMaster.edit.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("driverMaster.edit.title")}</CardTitle>
+
+                  <CardDescription>
+                    {t("driverMaster.edit.description")}
+                  </CardDescription>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Field data-invalid={updateErrors.driverCode ? true : undefined}>
@@ -398,10 +417,26 @@ export default function DriverMaster() {
         <form onSubmit={handleAddSubmit(onSubmit)}>
           <Card className="max-w-sm min-w-sm w-full max-h-fit">
             <CardHeader>
-              <CardTitle>{t("driverMaster.insert.title")}</CardTitle>
-              <CardDescription>
-                {t("driverMaster.insert.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("driverMaster.insert.title")}</CardTitle>
+
+                  <CardDescription>
+                    {t("driverMaster.insert.description")}
+                  </CardDescription>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Field data-invalid={addErrors.driverName ? true : undefined}>
@@ -449,7 +484,7 @@ export default function DriverMaster() {
         </form>
       )}
 
-      {isShow && (
+      {!isShow && (
         <Card className="overflow-hidden min-w-0">
           <DataTable
             data={drivers}

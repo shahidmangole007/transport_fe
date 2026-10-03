@@ -97,7 +97,7 @@ const data = {
         },
         {
           title:  t("sidebar.transactions.memo"),
-          url: "#",
+          url: "/dashboard/memoentry",
         }
       ],
     },

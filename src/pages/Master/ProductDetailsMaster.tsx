@@ -164,6 +164,10 @@ export default function ProductDetailsMaster() {
     }
   };
 
+  const toggleTable = () => {
+    setIsShow((prev) => !prev);
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -295,23 +299,21 @@ export default function ProductDetailsMaster() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === "F1" &&
-        location.pathname === "/dashboard/productmaster"
-      ) {
-        event.preventDefault();
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "F1") {
+      event.preventDefault();
+      event.stopPropagation();
 
-        setIsShow((prev) => !prev);
-      }
-    };
+      setIsShow((prev) => !prev);
+    }
+  };
 
-    window.addEventListener("keydown", handleKeyDown);
+  window.addEventListener("keydown", handleKeyDown, true);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [location.pathname]);
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown, true);
+  };
+}, []);
 
   return (
     <div className="grid h-full gap-8  md:grid-cols-[max-content_1fr] ">
@@ -319,10 +321,26 @@ export default function ProductDetailsMaster() {
         <form onSubmit={handleUpdateSubmit(onUpdate)}>
           <Card className="max-w-full min-w-md  max-h-fit">
             <CardHeader>
-              <CardTitle>{t("productMaster.edit.title")}</CardTitle>
-              <CardDescription>
-                {t("productMaster.edit.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("productMaster.edit.title")}</CardTitle>
+
+                  <CardDescription>
+                    {t("productMaster.edit.description")}
+                  </CardDescription>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Field
@@ -404,10 +422,26 @@ export default function ProductDetailsMaster() {
         <form onSubmit={handleAddSubmit(onSubmit)}>
           <Card className="max-w-sm min-w-sm w-full max-h-fit">
             <CardHeader>
-              <CardTitle>{t("productMaster.insert.title")}</CardTitle>
-              <CardDescription>
-                {t("productMaster.insert.description")}
-              </CardDescription>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <CardTitle>{t("productMaster.insert.title")}</CardTitle>
+
+                  <CardDescription>
+                    {t("productMaster.insert.description")}
+                  </CardDescription>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTable}
+                  title="Show / Hide Table (F1)"
+                  aria-label="Show / Hide Table"
+                >
+                  <InfoIcon className="h-5 w-5" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Field data-invalid={addErrors.productName ? true : undefined}>
@@ -455,7 +489,7 @@ export default function ProductDetailsMaster() {
         </form>
       )}
 
-      {isShow && (
+      {!isShow && (
         <Card className="overflow-hidden min-w-0">
           <DataTable
             data={products}

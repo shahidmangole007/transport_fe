@@ -10,12 +10,17 @@
     "saveAddressHolher": "Enter party address",
     "partyCodePlaceholder": "Party code",
     "partyNamePlaceholder": "Party name",
-    "partyAddressPlaceholder": "Party address"},
+    "partyAddressPlaceholder": "Party address"
+  },
     "common": {
       "save": "Save",
       "update": "Update",
       "delete": "Delete",
-      "searchParty": "Search Party..."
+      "searchParty": "Search Party...",
+
+      "submit": "Submit",
+      "edit": "Edit",
+      "cancel": "Cancel"
     },
     "edit": {
       "title": "Edit Party Info",
@@ -71,7 +76,12 @@
       "deleteConfirm2" : "This action cannot be undone.",
       "cancel" :"Cancel",
       "tryAgain" :"Try Again",
-      "hasBeenDeletedSuccessfully": "has been deleted successfully."
+      "hasBeenDeletedSuccessfully": "has been deleted successfully.",
+
+      "submit": "Submit",
+      "update": "Update",
+      "edit": "Edit",
+      "delete": "Delete"
     }
   },
   "driverMaster": {
@@ -110,7 +120,12 @@
     "deleteConfirm2": "This action cannot be undone.",
     "cancel": "Cancel",
     "tryAgain": "Try Again",
-    "hasBeenDeletedSuccessfully": "has been deleted successfully."
+    "hasBeenDeletedSuccessfully": "has been deleted successfully.",
+
+      "submit": "Submit",
+      "update": "Update",
+      "edit": "Edit",
+      "delete": "Delete"
   }
 },
 "productMaster": {
@@ -149,10 +164,16 @@
     "deleteConfirm2": "This action cannot be undone.",
     "cancel": "Cancel",
     "tryAgain": "Try Again",
-    "hasBeenDeletedSuccessfully": "has been deleted successfully."
+    "hasBeenDeletedSuccessfully": "has been deleted successfully.",
+
+      "submit": "Submit",
+      "update": "Update",
+      "edit": "Edit",
+      "delete": "Delete"
   }
 },
-    "vehicleMaster": {
+
+"vehicleMaster": {
     "insert": {
       "title": "Add Vehicle Info",
       "description": "Add a vehicle info to vehicle master.",
@@ -191,18 +212,17 @@
       "deleteConfirm1" : "Are you sure you want to delete",
       "deleteConfirm2" : "This action cannot be undone.",
 
-      "cancel" :"Cancel",
       "tryAgain" :"Try Again",
-      "hasBeenDeletedSuccessfully": "has been deleted successfully."
+      "hasBeenDeletedSuccessfully": "has been deleted successfully.",
+
+      "submit": "Submit",
+      "update": "Update",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel"
     }
   },
-  "common": {
-    "submit": "Submit",
-    "update": "Update",
-    "edit": "Edit",
-    "delete": "Delete",
-    "cancel": "Cancel"
-  },
+  
   "sidebar" :{
     "master": {
       "master": "Master",
@@ -310,11 +330,17 @@
     "deleteConfirm2": "This action cannot be undone.",
     "cancel": "Cancel",
     "tryAgain": "Try Again",
-    "ok": "OK"
+    "ok": "OK",
+
+      "submit": "Submit",
+      "update": "Update",
+      "edit": "Edit",
+      "delete": "Delete"
   }
 },
 
   "common": {
+    "submit": "Submit",
     "new": "New",
     "save": "Save",
     "update": "Update",
