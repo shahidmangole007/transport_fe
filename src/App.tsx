@@ -11,6 +11,8 @@ import DriverMaster from "./pages/Master/DriverMaster";
 import ProductDetailsMaster from "./pages/Master/ProductDetailsMaster";
 import Login2 from "./pages/Login2";
 import DemoMaster from "./pages/Master/DemoMaster";
+import LorryReceipt from "./pages/Transaction/LorryReceipt";
+import MemoEntry from "./pages/Transaction/MemoEntry";
 
 export default function App() {
 
@@ -35,6 +37,8 @@ export default function App() {
           <Route path="drivermaster" element={<DriverMaster />} />
           <Route path="productdetailsmaster" element={<ProductDetailsMaster />} />
           <Route path="demomaster" element={<DemoMaster />} />
+          <Route path="lorryreceipt" element={<LorryReceipt />} />
+          <Route path="memoentry" element={<MemoEntry />} />
         </Route>
       </Routes>
       <Toaster />

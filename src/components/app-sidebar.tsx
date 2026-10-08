@@ -93,11 +93,11 @@ const data = {
       items: [
         {
           title: t("sidebar.transactions.builty"),
-          url: "#",
+          url: "/dashboard/lorryreceipt",
         },
         {
           title:  t("sidebar.transactions.memo"),
-          url: "#",
+          url: "/dashboard/memoentry",
         }
       ],
     },
