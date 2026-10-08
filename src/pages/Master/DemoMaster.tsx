@@ -1,6 +1,4 @@
 import { SectionCards } from "@/components/section-cards";
-import data  from "../../data/data.json"
-import { DataTable } from "@/components/data-table";
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
 
 export default function DemoMaster() {

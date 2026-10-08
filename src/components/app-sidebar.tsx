@@ -97,7 +97,11 @@ const data = {
         },
         {
           title:  t("sidebar.transactions.memo"),
+<<<<<<< HEAD
           url: "/dashboard/memoentry",
+=======
+          url: "/dashboard/memo",
+>>>>>>> 6eef6d2 (feat : chnages)
         }
       ],
     },
@@ -162,20 +166,8 @@ const data = {
       ),
       items: [
         {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          title: t("sidebar.shortcuts.shortcuts"),
+          url: "shortcuts",
         },
       ],
     },

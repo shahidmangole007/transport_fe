@@ -12,7 +12,12 @@ import ProductDetailsMaster from "./pages/Master/ProductDetailsMaster";
 import Login2 from "./pages/Login2";
 import DemoMaster from "./pages/Master/DemoMaster";
 import LorryReceipt from "./pages/Transaction/LorryReceipt";
+<<<<<<< HEAD
 import MemoEntry from "./pages/Transaction/MemoEntry";
+=======
+import ShortCuts from "./pages/Shortcuts/ShortCuts";
+import Memo from "./pages/Transaction/Memo";
+>>>>>>> 6eef6d2 (feat : chnages)
 
 export default function App() {
 
@@ -38,7 +43,12 @@ export default function App() {
           <Route path="productdetailsmaster" element={<ProductDetailsMaster />} />
           <Route path="demomaster" element={<DemoMaster />} />
           <Route path="lorryreceipt" element={<LorryReceipt />} />
+<<<<<<< HEAD
           <Route path="memoentry" element={<MemoEntry />} />
+=======
+          <Route path="memo" element={<Memo />} />
+          <Route path="shortcuts" element={<ShortCuts />} />
+>>>>>>> 6eef6d2 (feat : chnages)
         </Route>
       </Routes>
       <Toaster />

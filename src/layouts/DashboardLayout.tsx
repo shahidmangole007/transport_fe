@@ -50,7 +50,12 @@ export default function DashboardLayout() {
     "/dashboard/citymaster": "City Master",
     "/dashboard/drivermaster": "Driver Master",
     "/dashboard/productdetailsmaster": "Product Details Master",
+<<<<<<< HEAD
     "/dashboard/lorryreceipt": "Lorry Receipt",
+=======
+    "/dashboard/lorryreceipt": "Builty",
+    "/dashboard/memo": "Memo Entry",
+>>>>>>> 6eef6d2 (feat : chnages)
   };
 
   console.log(location.pathname);
@@ -90,7 +95,8 @@ export default function DashboardLayout() {
           </header>
           <div className="flex flex-1 flex-col  ">
           {/* <div className="flex flex-1 flex-col  bg-muted/80"> */}
-            <div className="   h-full gap-8  p-8">
+           
+            <div className=" h-full gap-8  p-4">
               <Outlet />
             </div>
 
@@ -131,6 +137,7 @@ export default function DashboardLayout() {
                 </KbdGroup>
               </div>
             </div>
+
           </div>
         </SidebarInset>
       </SidebarProvider>

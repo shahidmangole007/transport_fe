@@ -25,9 +25,9 @@ export const deleteCity = (id: number) => {
 }
 
 
-export const searchCity = async (query: string) => {
+export const searchCity = async (search: string) => {
   const res = await api.get("/city/search", {
-    params: { query },
+    params: { search },
   });
 
   return res.data;

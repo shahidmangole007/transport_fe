@@ -1,5 +1,6 @@
 {
   "partyMaster": {
+<<<<<<< HEAD
     "insert": {
       "title": "पार्टी मास्टर",
       "description": "पार्टीचा कोड, नाव आणि पत्ता प्रविष्ट करा.",
@@ -13,6 +14,18 @@
       "partyAddressPlaceholder": "पार्टीचा पत्ता"
     },
 
+=======
+    "title": "पार्टी मास्टर",
+    "description": "पार्टीचा कोड, नाव आणि पत्ता प्रविष्ट करा.",
+    "partyCode": "पार्टी कोड",
+    "partyName": "पार्टीचे नाव",
+    "partyAddress": "पार्टीचा पत्ता",
+    "partyMobile": "पार्टीचा व्हॉट्सॲप मोबाईल नंबर",
+    "partyCodePlaceholder": "पार्टी कोड",
+    "partyNamePlaceholder": "पार्टीचे नाव",
+    "partyAddressPlaceholder": "पार्टीचा पत्ता",
+    "partyMobilePlaceholder": "पार्टीचा व्हॉट्सॲप मोबाईल नंबर",
+>>>>>>> 6eef6d2 (feat : chnages)
     "common": {
       "save": "जतन करा",
       "update": "सुधारित करा",
@@ -35,7 +48,8 @@
       "partyCodeRequired": "पार्टी कोड आवश्यक आहे",
       "partyNameRequired": "पार्टीचे नाव आवश्यक आहे",
       "partyNameMin": "पार्टीचे नाव किमान ४ अक्षरांचे असावे",
-      "partyAddressMin": "पार्टीचा पत्ता किमान ४ अक्षरांचा असावा"
+      "partyAddressMin": "पार्टीचा पत्ता किमान ४ अक्षरांचा असावा",
+      "partyMobileMin": "पार्टीचा मोबाईल नंबर किमान १० अक्षरांचा असावा"
     }
   },
   "cityMaster": {

@@ -79,9 +79,17 @@ export default function PartyMaster() {
       .min(2, t("partyMaster.validation.partyNameMin")),
 
     partyAddress: z
+<<<<<<< HEAD
     .string()
     .min(2, t("partyMaster.validation.partyNameRequired"))
     .min(2, t("partyMaster.validation.partyNameMin")),
+=======
+      .string()
+      .min(4, t("partyMaster.validation.partyAddressMin")),
+    mobileNo: z
+          .string()
+          .min(10, t("partyMaster.validation.partyAddressMin")),
+>>>>>>> 6eef6d2 (feat : chnages)
   });
 
   const partyMasterUpdateSchema = z.object({
@@ -109,6 +117,7 @@ export default function PartyMaster() {
     resolver: zodResolver(partyMasterSchema),
     defaultValues: {
       partyName: "",
+<<<<<<< HEAD
       partyAddress:"",
     },
   });
@@ -124,6 +133,10 @@ export default function PartyMaster() {
       partyCode: 0,
       partyName: "",
       partyAddress:"",
+=======
+      partyAddress: "",
+      mobileNo : ""
+>>>>>>> 6eef6d2 (feat : chnages)
     },
   });
 
@@ -181,10 +194,24 @@ export default function PartyMaster() {
     fetchParties();
   }, []);
 
+<<<<<<< HEAD
   const onSubmit = async (data: partyMasterFormData) => {
     try {
       setSubmitLoading(true);
       setErrorMessage(null);
+=======
+      try {
+        const res = {
+          data: [
+            {
+              partyCode: "P001",
+              partyName: "ABC Traders",
+              partyAddress: "Kolhapur",
+              mobileNo: "7895687498"
+            },
+          ],
+        };
+>>>>>>> 6eef6d2 (feat : chnages)
 
       let submitObj = { name: data.partyName };
       const response = await createParty(submitObj);
@@ -326,6 +353,7 @@ export default function PartyMaster() {
   }, [location.pathname]);
 
   return (
+<<<<<<< HEAD
     <div className="grid h-full gap-8  md:grid-cols-[max-content_1fr] ">
       {isEditing ? (
         <form onSubmit={handleUpdateSubmit(onUpdate)}>
@@ -337,6 +365,117 @@ export default function PartyMaster() {
                   <CardDescription>
                     {t("partyMaster.edit.description")}
                   </CardDescription>
+=======
+    <div className="grid h-full gap-4 md:grid-cols-[40%_59%]">
+      <div>
+        <Card>
+          <CardHeader>
+            <CardTitle>{t("partyMaster.title")}</CardTitle>
+
+            <CardDescription>
+              {t("partyMaster.description")}
+            </CardDescription>
+
+            <CardAction>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setIsShow(!isShow)}
+              >
+                <InfoIcon />
+              </Button>
+            </CardAction>
+          </CardHeader>
+
+          <CardContent>
+            <form>
+              <FieldGroup>
+                <div className="flex flex-col gap-6">
+                  {/* Party Code */}
+                  <div className="grid gap-2">
+                    <Label htmlFor="code">
+                      {t("partyMaster.partyCode")}
+                    </Label>
+
+                    <Input
+                      id="code"
+                      type="number"
+                      placeholder={t(
+                        "partyMaster.partyCodePlaceholder"
+                      )}
+                      {...register("partyCode")}
+                    />
+                  </div>
+
+                  {errors.partyCode && (
+                    <p className="text-sm text-red-500">
+                      {errors.partyCode.message}
+                    </p>
+                  )}
+
+                  {/* Party Name */}
+                  <div className="grid gap-2">
+                    <Label htmlFor="name">
+                      {t("partyMaster.partyName")}
+                    </Label>
+
+                    <Input
+                      id="name"
+                      placeholder={t(
+                        "partyMaster.partyNamePlaceholder"
+                      )}
+                      {...register("partyName")}
+                    />
+                  </div>
+
+                  {errors.partyName && (
+                    <p className="text-sm text-red-500">
+                      {errors.partyName.message}
+                    </p>
+                  )}
+
+                  {/* Party Address */}
+                  <div className="grid gap-2">
+                    <Label htmlFor="address">
+                      {t("partyMaster.partyAddress")}
+                    </Label>
+
+                    <Input
+                      id="address"
+                      placeholder={t(
+                        "partyMaster.partyAddressPlaceholder"
+                      )}
+                      {...register("partyAddress")}
+                    />
+                  </div>
+
+                  {errors.partyAddress && (
+                    <p className="text-sm text-red-500">
+                      {errors.partyAddress.message}
+                    </p>
+                  )}
+
+                      {/* Party MobileNo */}
+                  <div className="grid gap-2">
+                    <Label htmlFor="address">
+                      {t("partyMaster.partyMobile")}
+                    </Label>
+
+                    <Input
+                      id="mobileno"
+                      placeholder={t(
+                        "partyMaster.partyMobilePlaceholder"
+                      )}
+                      {...register("mobileNo")}
+                    />
+                  </div>
+
+                  {errors.mobileNo && (
+                    <p className="text-sm text-red-500">
+                      {errors.mobileNo.message}
+                    </p>
+                  )}
+>>>>>>> 6eef6d2 (feat : chnages)
                 </div>
                 
                 <Button

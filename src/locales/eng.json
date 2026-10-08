@@ -6,12 +6,20 @@
     "partyCode": "Party Code",
     "partyName": "Party Name",
     "partyAddress": "Party Address",
+<<<<<<< HEAD
     "savePlaceHolher": "Enter party name",
     "saveAddressHolher": "Enter party address",
     "partyCodePlaceholder": "Party code",
     "partyNamePlaceholder": "Party name",
     "partyAddressPlaceholder": "Party address"
   },
+=======
+    "partyMobile": "Party Mobile No",
+    "partyCodePlaceholder": "Party code",
+    "partyNamePlaceholder": "Party name",
+    "partyAddressPlaceholder": "Party address",
+    "partyMobilePlaceholder": "Party Mobile No",
+>>>>>>> 6eef6d2 (feat : chnages)
     "common": {
       "save": "Save",
       "update": "Update",
@@ -38,7 +46,8 @@
       "partyCodeRequired": "Party Code is required",
       "partyNameRequired": "Party Name is required",
       "partyNameMin": "Party Name must be at least 4 characters",
-      "partyAddressMin": "Party Address must be at least 4 characters"
+      "partyAddressMin": "Party Address must be at least 4 characters",
+      "partyMobileMin": "Party Mobile No must be at least 10 characters"
     }
   },
   "cityMaster": {
